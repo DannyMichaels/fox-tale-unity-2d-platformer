@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
   */
   private bool checkIsOnGround()
   {
+    // one way to debug this is click on player, then on the inspect tab click the 3 dots at the right, and click Debug.
     isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
 
     return isOnGround;
