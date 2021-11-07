@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+  // the value for these vars can be changed in the inspector tab
   public float moveSpeed;
   public Rigidbody2D theRB; // the rigid body
   public float jumpForce;
   private bool isOnGround; // keep track of wether player is on ground or not.
   public Transform groundCheckPoint;
   public LayerMask whatIsGround;
+  private bool canDoubleJump;
 
   // Start is called before the first frame update
   void Start()
@@ -34,14 +36,21 @@ public class PlayerController : MonoBehaviour
 
   private void handleJump()
   {
-    isOnGround = checkIsOnGround();
+    checkIsOnGround();
+    checkCanDoubleJump();
 
     // edit -> project settings -> input manager, name of input, NOT set key of input
     if (Input.GetButtonDown("Jump")) // GetButtonDown: the very moment a button is pressed (not held down, for held down use GetButton) 
     {
       if (isOnGround)
       {
-        theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+        makePlayerJump();
+      }
+      // if not on ground and canDoubleJump (gets set with checkCanDoubleJump), then we can jump once more if Input.getButton is == 'Jump'
+      else if (canDoubleJump)
+      {
+        makePlayerJump();
+        canDoubleJump = false; // after done one more jump it's false. 
       }
     }
   }
@@ -54,11 +63,23 @@ public class PlayerController : MonoBehaviour
        and if there are any objects on the ground layer it will set it to true, else false.
       This is to avoid unlimited spam jumping, you cannot jump unless you're on the ground.
   */
-  private bool checkIsOnGround()
+  private void checkIsOnGround()
   {
     // one way to debug this is click on player, then on the inspect tab click the 3 dots at the right, and click Debug.
     isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
+  }
 
-    return isOnGround;
+
+  private void checkCanDoubleJump()
+  {
+    if (isOnGround)
+    {
+      canDoubleJump = true;
+    }
+  }
+
+  private void makePlayerJump()
+  {
+    theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
   }
 }
