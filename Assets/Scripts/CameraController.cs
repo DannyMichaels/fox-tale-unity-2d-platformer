@@ -5,6 +5,8 @@ public class CameraController : MonoBehaviour
   public Transform target; // for example: the target is the player
   public Transform farBackground, middleBackground;
 
+  public float minHeight, maxHeight; // as low as we want our camera to go, as high as we want our camera to go
+
   private float lastXPosition;
 
   // Start is called before the first frame update
@@ -16,15 +18,26 @@ public class CameraController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    FollowTargetHorizontal();
+    FollowTargetVerticalAndHorizontal();
     MakeBackgroundFollowCamera();
     lastXPosition = transform.position.x;
   }
 
-  void FollowTargetHorizontal()
+  // void FollowTargetHorizontal()
+  // {
+  //   transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
+  // }
+
+  void FollowTargetVerticalAndHorizontal()
   {
-    transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
-    Debug.Log("transform position " + transform.position);
+    /* transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+     float clampedY = Mathf.Clamp(transform.position.y, minHeight, maxHeight);  // get Y position for camera but make sure it's only between min and max height
+     transform.position = new Vector3(transform.position.x, clampedY, transform.position.z); */
+
+
+    float clampedY = Mathf.Clamp(target.position.y, minHeight, maxHeight);  // get Y position for camera but make sure it's only between min and max height
+    transform.position = new Vector3(target.position.x, clampedY, transform.position.z);
   }
 
   // know how much camera is moving.
