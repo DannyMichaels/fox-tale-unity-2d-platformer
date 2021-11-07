@@ -290,6 +290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306b098179d877b4498a934dfef3ab4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 912507163}
+  farBackground: {fileID: 270509996}
+  middleBackground: {fileID: 99542106}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
