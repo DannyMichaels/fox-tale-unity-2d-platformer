@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
   public LayerMask whatIsGround;
   private bool canDoubleJump;
 
+  private Animator animator;
+
   // Start is called before the first frame update
   void Start()
   {
-
+    animator = GetComponent<Animator>();
   }
 
   // Update is called once per frame
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
   {
     handleMoveHorizontal();
     handleJump();
+    useAnimationEffect();
   }
 
   private void handleMoveHorizontal()
@@ -81,5 +84,18 @@ public class PlayerController : MonoBehaviour
   private void makePlayerJump()
   {
     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+  }
+
+
+  /* 
+    @method useAnimationEffect
+    @desc
+      Listen to changes of player properties to render certain animations. 
+      if isOnGround changes, change it in the animator, same thing for other properties
+  */
+  private void useAnimationEffect()
+  {
+    animator.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x)); // always get positive value (for when moving left will return negative value)
+    animator.SetBool("isOnGround", isOnGround);
   }
 }
