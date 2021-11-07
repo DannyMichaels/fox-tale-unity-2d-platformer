@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 912507164}
   - component: {fileID: 912507165}
   - component: {fileID: 912507166}
+  - component: {fileID: 912507167}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -717,9 +718,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb4540d1ae16cf4383c192f605a5900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
+  moveSpeed: 8
   theRB: {fileID: 912507164}
-  jumpForce: 15
+  jumpForce: 12
+  groundCheckPoint: {fileID: 375597285}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!95 &912507167
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912507161}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eed33c26f115314489b0797b0fe2c420, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1142169510
 GameObject:
   m_ObjectHideFlags: 0
