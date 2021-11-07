@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,11 +12,13 @@ public class PlayerController : MonoBehaviour
   private bool canDoubleJump;
 
   private Animator animator;
+  private SpriteRenderer theSR; // the sprite renderer
 
   // Start is called before the first frame update
   void Start()
   {
     animator = GetComponent<Animator>();
+    theSR = GetComponent<SpriteRenderer>();
   }
 
   // Update is called once per frame
@@ -95,7 +95,24 @@ public class PlayerController : MonoBehaviour
   */
   private void useAnimationEffect()
   {
+    handleFlipSpriteXAxis();
+
     animator.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x)); // always get positive value (for when moving left will return negative value)
     animator.SetBool("isOnGround", isOnGround);
+  }
+
+  private void handleFlipSpriteXAxis()
+  {
+    bool isMovingLeft = theRB.velocity.x < 0;
+    bool isMovingRight = theRB.velocity.x > 0;
+
+    if (isMovingLeft)
+    {
+      theSR.flipX = true;
+    }
+    else if (isMovingRight)
+    {
+      theSR.flipX = false;
+    }
   }
 }
