@@ -8,11 +8,12 @@ public class CameraController : MonoBehaviour
   public float minHeight, maxHeight; // as low as we want our camera to go, as high as we want our camera to go
 
   private float lastXPosition;
+  private float lastYPosition;
 
   // Start is called before the first frame update
   void Start()
   {
-    lastXPosition = transform.position.x;
+    setLastXAndYPositions();
   }
 
   // Update is called once per frame
@@ -20,7 +21,7 @@ public class CameraController : MonoBehaviour
   {
     FollowTargetVerticalAndHorizontal();
     MakeBackgroundFollowCamera();
-    lastXPosition = transform.position.x;
+    setLastXAndYPositions();
   }
 
   // void FollowTargetHorizontal()
@@ -40,11 +41,26 @@ public class CameraController : MonoBehaviour
     transform.position = new Vector3(target.position.x, clampedY, transform.position.z);
   }
 
-  // know how much camera is moving.
+
   void MakeBackgroundFollowCamera()
   {
+
+    // parallax horizontal
     float amountToMoveX = transform.position.x - lastXPosition;
     farBackground.position += new Vector3(amountToMoveX, 0f, 0f);
     middleBackground.position += new Vector3(amountToMoveX * .5f, 0f, 0f);
+
+
+    // parallax vertical
+    float amountToMoveY = transform.position.y - lastYPosition;
+    farBackground.position += new Vector3(amountToMoveY, 0f, 0f);
+    middleBackground.position += new Vector3(amountToMoveY * .5f, 0f, 0f);
+  }
+
+
+  void setLastXAndYPositions()
+  {
+    lastXPosition = transform.position.x;
+    lastYPosition = transform.position.y;
   }
 }
