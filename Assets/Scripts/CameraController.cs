@@ -7,13 +7,15 @@ public class CameraController : MonoBehaviour
 
   public float minHeight, maxHeight; // as low as we want our camera to go, as high as we want our camera to go
 
-  private float lastXPosition;
-  private float lastYPosition;
+  // private float lastXPosition;
+  // private float lastYPosition;
+  private Vector2 lastPosition;
 
   // Start is called before the first frame update
   void Start()
   {
-    setLastXAndYPositions();
+    // setLastXAndYPositions();
+    setLastCameraPosition();
   }
 
   // Update is called once per frame
@@ -21,7 +23,8 @@ public class CameraController : MonoBehaviour
   {
     FollowTargetVerticalAndHorizontal();
     MakeBackgroundFollowCamera();
-    setLastXAndYPositions();
+    // setLastXAndYPositions();
+    setLastCameraPosition();
   }
 
   // void FollowTargetHorizontal()
@@ -44,23 +47,27 @@ public class CameraController : MonoBehaviour
 
   void MakeBackgroundFollowCamera()
   {
+    // float amountToMoveX = transform.position.x - lastXPosition;   // parallax horizontal
+    // float amountToMoveY = transform.position.y - lastYPosition;   // parallax vertical
+    // farBackground.position += new Vector3(amountToMoveX, amountToMoveY, 0f);
+    // middleBackground.position += new Vector3(amountToMoveX * .5f, amountToMoveY * .5f, 0f);
 
-    // parallax horizontal
-    float amountToMoveX = transform.position.x - lastXPosition;
-    farBackground.position += new Vector3(amountToMoveX, 0f, 0f);
-    middleBackground.position += new Vector3(amountToMoveX * .5f, 0f, 0f);
 
-
-    // parallax vertical
-    float amountToMoveY = transform.position.y - lastYPosition;
-    farBackground.position += new Vector3(amountToMoveY, 0f, 0f);
-    middleBackground.position += new Vector3(amountToMoveY * .5f, 0f, 0f);
+    // both vertical and horizontal
+    Vector2 amountToMove = new Vector2(transform.position.x - lastPosition.x, transform.position.y - lastPosition.y);
+    farBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f);
+    middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f) * .5f;
   }
 
 
-  void setLastXAndYPositions()
+  // void setLastXAndYPositions()
+  // {
+  //   lastXPosition = transform.position.x;
+  //   lastYPosition = transform.position.y;
+  // }
+
+  void setLastCameraPosition()
   {
-    lastXPosition = transform.position.x;
-    lastYPosition = transform.position.y;
+    lastPosition = transform.position; // get x and y, because this is Vector2 and not 3 it will chop off the Z value
   }
 }
