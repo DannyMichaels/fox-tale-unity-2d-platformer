@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1874393478, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9069140761462235616, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
       propertyPath: m_Name
       value: Player
@@ -304,6 +308,7 @@ MonoBehaviour:
   heart2: {fileID: 1663422136}
   heart3: {fileID: 486071694}
   heartFull: {fileID: 8109154662235370213, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
+  heartHalf: {fileID: 2139837793675082937, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
   heartEmpty: {fileID: -4390673095631447188, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
 --- !u!1 &350644047
 GameObject:
