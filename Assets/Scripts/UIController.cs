@@ -50,6 +50,12 @@ public class UIController : MonoBehaviour
         heart2.sprite = heartEmpty;
         heart3.sprite = heartEmpty;
         break;
+
+      default:
+        heart1.sprite = heartEmpty;
+        heart2.sprite = heartEmpty;
+        heart3.sprite = heartEmpty;
+        break;
     }
   }
 }
