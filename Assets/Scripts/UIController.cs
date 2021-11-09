@@ -28,34 +28,53 @@ public class UIController : MonoBehaviour
   public void UpdateHealthDisplay()
   {
     int currentHealth = PlayerHealthController.instance.currentHealth;
-    switch (currentHealth)
-    {
-      case 3:
-        heart1.sprite = heartFull;
-        heart2.sprite = heartFull;
-        heart3.sprite = heartFull;
-        break;
-      case 2:
-        heart1.sprite = heartFull;
-        heart2.sprite = heartFull;
-        heart3.sprite = heartEmpty;
-        break;
-      case 1:
-        heart1.sprite = heartFull;
-        heart2.sprite = heartEmpty;
-        heart3.sprite = heartEmpty;
-        break;
-      case 0:
-        heart1.sprite = heartEmpty;
-        heart2.sprite = heartEmpty;
-        heart3.sprite = heartEmpty;
-        break;
+    renderHeartSprites(currentHealth);
+    // switch (currentHealth)
+    // {
+    //   case 3:
+    //     heart1.sprite = heartFull;
+    //     heart2.sprite = heartFull;
+    //     heart3.sprite = heartFull;
+    //     break;
+    //   case 2:
+    //     heart1.sprite = heartFull;
+    //     heart2.sprite = heartFull;
+    //     heart3.sprite = heartEmpty;
+    //     break;
+    //   case 1:
+    //     heart1.sprite = heartFull;
+    //     heart2.sprite = heartEmpty;
+    //     heart3.sprite = heartEmpty;
+    //     break;
+    //   case 0:
+    //     heart1.sprite = heartEmpty;
+    //     heart2.sprite = heartEmpty;
+    //     heart3.sprite = heartEmpty;
+    //     break;
 
-      default:
-        heart1.sprite = heartEmpty;
-        heart2.sprite = heartEmpty;
-        heart3.sprite = heartEmpty;
-        break;
+    //   default:
+    //     heart1.sprite = heartEmpty;
+    //     heart2.sprite = heartEmpty;
+    //     heart3.sprite = heartEmpty;
+    //     break;
+    // }
+  }
+
+
+  public void renderHeartSprites(int health)
+  {
+    Image[] hearts = { heart1, heart2, heart3 };
+
+    for (int i = 0; i < hearts.Length; i++)
+    {
+      if (i >= health)
+      {
+        hearts[i].sprite = heartEmpty;
+      }
+      else
+      {
+        hearts[i].sprite = heartFull;
+      }
     }
   }
 }
