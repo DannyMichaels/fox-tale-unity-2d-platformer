@@ -41,6 +41,7 @@ public class PlayerHealthController : MonoBehaviour
   {
     if (currentHealth <= 0)
     {
+      currentHealth = 0;
       DestroyPlayer();
     }
   }
