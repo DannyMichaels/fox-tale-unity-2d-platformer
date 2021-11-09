@@ -23,11 +23,10 @@ public class DamagePlayer : MonoBehaviour
     // check that a player rigid body is hiting it and not any other rigid body.
     if (other.tag == "Player")
     {
-
       // Debug.Log("Hit: " + other);
+      // FindObjectOfType<PlayerHealthController>().DealDamage(); // run the DealDamage function that is inside PlayerHealthController;
 
-
-      FindObjectOfType<PlayerHealthController>().DealDamage(); // run the DealDamage function that is inside PlayerHealthController;
+      PlayerHealthController.instance.DealDamage();  // run the DealDamage function that is inside PlayerHealthController (requires an singleton instance, is more optimized)
     }
 
   }

@@ -1,8 +1,21 @@
 using UnityEngine;
 
+// static vars do not show up in the inspector 
+
 public class PlayerHealthController : MonoBehaviour
 {
+  public static PlayerHealthController instance; // instance = Singleton: create a version of this script that only one version of it can exist
+
   public int currentHealth, maxHealth;
+
+
+  // Awake is called just right before the Start function gets called (as soon as the game starts running)
+  private void Awake()
+  {
+    instance = this; // this would be the PlayerHealthController
+  }
+
+
 
   // Start is called before the first frame update
   void Start()
