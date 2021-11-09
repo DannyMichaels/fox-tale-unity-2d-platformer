@@ -34,6 +34,7 @@ public class PlayerHealthController : MonoBehaviour
   {
     currentHealth -= 1;
     CheckPlayerDead();
+    updateUIHeartsDisplay();
   }
 
   public void CheckPlayerDead()
@@ -42,6 +43,13 @@ public class PlayerHealthController : MonoBehaviour
     {
       DestroyPlayer();
     }
+  }
+
+
+  public void updateUIHeartsDisplay()
+  {
+
+    UIController.instance.UpdateHealthDisplay();
   }
 
   public void DestroyPlayer()
