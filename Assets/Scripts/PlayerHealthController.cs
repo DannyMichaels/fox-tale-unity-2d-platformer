@@ -11,6 +11,8 @@ public class PlayerHealthController : MonoBehaviour
   public float invincibleLength; // how long do we want our player to be invincible after he got hit.
   public float invincibleCounter;
 
+  private SpriteRenderer theSR;
+
   // Awake is called just right before the Start function gets called (as soon as the game starts running)
   private void Awake()
   {
@@ -23,6 +25,8 @@ public class PlayerHealthController : MonoBehaviour
   void Start()
   {
     currentHealth = maxHealth;
+
+    theSR = GetComponent<SpriteRenderer>();
   }
 
   // Update is called once per frame
@@ -61,21 +65,38 @@ public class PlayerHealthController : MonoBehaviour
 
   public void makePlayerInvicible()
   {
+    // the logic
     invincibleCounter = invincibleLength;
+
+    setPlayerOpacity(0.5f);
   }
 
   public void HandleInvincibility()
   {
     bool isInvincible = invincibleCounter > 0;
+
     // if the player is invincible, make sure that a second after he is not invincible
     if (isInvincible)
     {
       /* Time.deltaTime is the time it takes to get from one update from to the next.
        so a 60 fps game Time.deltaTime would be 1/60th of a second, if it was 30fps it would be 1/30  */
       invincibleCounter -= Time.deltaTime;
+
+      bool isNotInvincible = invincibleCounter <= 0; // it gets set in the line above so we can still check here
+
+      if (isNotInvincible)
+      {
+        setPlayerOpacity(1f);
+      }
     }
   }
 
+  private void setPlayerOpacity(float opacity)
+  {
+    // unity interperet RGBA values from 0 to 1 instead of 0 to 255
+    // change player opacity to make him appear that way (the a in rgba)
+    theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, opacity); // keep rgb as is, change a (transparency)
+  }
 
   public void updateUIHeartsDisplay()
   {
@@ -86,4 +107,6 @@ public class PlayerHealthController : MonoBehaviour
   {
     gameObject.SetActive(false); // make player dissapear
   }
+
+
 }
