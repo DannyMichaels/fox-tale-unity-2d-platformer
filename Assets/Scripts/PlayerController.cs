@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+  public static PlayerController instance;
   // the value for these vars can be changed in the inspector tab
   public float moveSpeed;
   public Rigidbody2D theRB; // the rigid body
@@ -14,6 +15,15 @@ public class PlayerController : MonoBehaviour
   private Animator animator;
   private SpriteRenderer theSR; // the sprite renderer
 
+  public float knockBackLength, knockBackForce;
+  private float knockBackCounter;
+
+
+  private void Awake()
+  {
+    instance = this;
+  }
+
   // Start is called before the first frame update
   void Start()
   {
@@ -24,8 +34,18 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    HandleMoveHorizontal();
-    HandleJump();
+    bool isKnockedBack = checkIsKnockedBack();
+
+    if (isKnockedBack)
+    {
+      UseKnockBackEffect();
+    }
+    else
+    {
+      HandleMoveHorizontal();
+      HandleJump();
+      HandleSpriteFacingDirection();
+    }
     UseAnimationEffect();
   }
 
@@ -72,7 +92,6 @@ public class PlayerController : MonoBehaviour
     isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
   }
 
-
   private void CheckCanDoubleJump()
   {
     if (isOnGround)
@@ -86,7 +105,6 @@ public class PlayerController : MonoBehaviour
     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
   }
 
-
   /* 
     @method useAnimationEffect
     @desc
@@ -95,13 +113,11 @@ public class PlayerController : MonoBehaviour
   */
   private void UseAnimationEffect()
   {
-    HandleFlipSpriteXAxis();
-
     animator.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x)); // always get positive value (for when moving left will return negative value)
     animator.SetBool("isOnGround", isOnGround);
   }
 
-  private void HandleFlipSpriteXAxis()
+  private void HandleSpriteFacingDirection()
   {
     bool isMovingLeft = theRB.velocity.x < 0;
     bool isMovingRight = theRB.velocity.x > 0;
@@ -113,6 +129,37 @@ public class PlayerController : MonoBehaviour
     else if (isMovingRight)
     {
       theSR.flipX = false;
+    }
+  }
+
+  public void KnockBack()
+  {
+    knockBackCounter = knockBackLength;
+    theRB.velocity = new Vector2(0f, knockBackForce); // move player in Y axis with knockback force (a little knockback up)
+  }
+
+  private bool checkIsKnockedBack()
+  {
+    // return if player is being knocked back
+    return knockBackCounter > 0;
+  }
+
+  // this runs when the player is being knocked back (isKnockedBack is true)
+  private void UseKnockBackEffect()
+  {
+    knockBackCounter -= Time.deltaTime; // set counter when
+
+    bool isFacingRight = !theSR.flipX;
+
+
+    // push him in the X axis
+    if (isFacingRight)
+    {
+      theRB.velocity = new Vector2(-knockBackForce, theRB.velocity.y); // a little x axis knockback (push player to left)
+    }
+    else
+    {
+      theRB.velocity = new Vector2(knockBackForce, theRB.velocity.y); // a little x axis knockback (push player to right)
     }
   }
 }

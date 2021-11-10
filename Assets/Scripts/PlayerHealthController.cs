@@ -69,6 +69,7 @@ public class PlayerHealthController : MonoBehaviour
     invincibleCounter = invincibleLength;
 
     setPlayerOpacity(0.5f);
+    PlayerController.instance.KnockBack();
   }
 
   public void HandleInvincibility()
@@ -107,6 +108,4 @@ public class PlayerHealthController : MonoBehaviour
   {
     gameObject.SetActive(false); // make player dissapear
   }
-
-
 }
