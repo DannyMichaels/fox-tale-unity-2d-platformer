@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    bool isKnockedBack = checkIsKnockedBack();
+    bool isKnockedBack = CheckIsKnockedBack();
 
     if (isKnockedBack)
     {
@@ -136,9 +136,11 @@ public class PlayerController : MonoBehaviour
   {
     knockBackCounter = knockBackLength;
     theRB.velocity = new Vector2(0f, knockBackForce); // move player in Y axis with knockback force (a little knockback up)
+
+    animator.SetTrigger("hurt");
   }
 
-  private bool checkIsKnockedBack()
+  private bool CheckIsKnockedBack()
   {
     // return if player is being knocked back
     return knockBackCounter > 0;

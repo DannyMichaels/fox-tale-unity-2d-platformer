@@ -174,6 +174,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  knockBackLength: 0.25
+  knockBackForce: 5
 --- !u!95 &9069140761462235622
 Animator:
   serializedVersion: 3
