@@ -51,7 +51,6 @@ public class LevelManager : MonoBehaviour
     RespawnPlayer();
   }
 
-
   private void DestroyPlayer()
   {
     PlayerController.instance.gameObject.SetActive(false); // make player dissapear (deactivate)

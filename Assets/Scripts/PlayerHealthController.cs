@@ -49,8 +49,6 @@ public class PlayerHealthController : MonoBehaviour
 
   public void CheckPlayerDead()
   {
-
-
     if (currentHealth <= 0)
     {
       currentHealth = 0;
@@ -60,7 +58,6 @@ public class PlayerHealthController : MonoBehaviour
     {
       makePlayerInvicible(); // avoid player getting hit multiple times in a period of time (classic platformer thing)
     }
-
   }
 
   public void makePlayerInvicible()
