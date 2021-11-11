@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -19,13 +17,17 @@ public class Checkpoint : MonoBehaviour
 
   }
 
+  // when player hits checkpoint
   private void OnTriggerEnter2D(Collider2D other)
   {
     bool isCollidedWithPlayer = other.CompareTag("Player");
     if (isCollidedWithPlayer)
     {
       CheckpointController.instance.DeactivateCheckpoints();  // turn off all previous checkpoints
+
       theSR.sprite = checkPointOn; // turn on the newly found checkpoint
+
+      CheckpointController.instance.SetSpawnPoint(transform.position); // set the new spawn point to where the checkpoint is
     }
   }
 

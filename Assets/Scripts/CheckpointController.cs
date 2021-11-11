@@ -6,6 +6,8 @@ public class CheckpointController : MonoBehaviour
 
   private Checkpoint[] checkpoints; // Checkpoint type from Checkpoint.cs
 
+  public Vector3 spawnPoint; // we make it a Vector3 because it's going to be a position in the world (x,y,z) which is what a vector3 gives.
+
   private void Awake()
   {
     instance = this;
@@ -41,5 +43,10 @@ public class CheckpointController : MonoBehaviour
     {
       checkpoint.ResetCheckPoint(); // that method exists in Checkpoint.cs script file
     }
+  }
+
+  public void SetSpawnPoint(Vector3 newSpawnPoint)
+  {
+    spawnPoint = newSpawnPoint;
   }
 }
