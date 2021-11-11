@@ -32,6 +32,7 @@ public class CheckpointController : MonoBehaviour
   */
   private void FindCheckpoints()
   {
+    // ONLY FINDS OBJECTS THAT ARE ACTIVATED
     checkpoints = FindObjectsOfType<Checkpoint>();
   }
 }
