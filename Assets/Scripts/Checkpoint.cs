@@ -21,9 +21,11 @@ public class Checkpoint : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player"))
+    bool isCollidedWithPlayer = other.CompareTag("Player");
+    if (isCollidedWithPlayer)
     {
-      theSR.sprite = checkPointOn;
+      CheckpointController.instance.DeactivateCheckpoints();  // turn off all previous checkpoints
+      theSR.sprite = checkPointOn; // turn on the newly found checkpoint
     }
   }
 

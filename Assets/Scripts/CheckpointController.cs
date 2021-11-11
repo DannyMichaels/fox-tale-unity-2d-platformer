@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointController : MonoBehaviour
 {
   public static CheckpointController instance;
 
-  private Checkpoint[] checkpoints;
+  private Checkpoint[] checkpoints; // Checkpoint type from Checkpoint.cs
 
   private void Awake()
   {
@@ -26,13 +24,22 @@ public class CheckpointController : MonoBehaviour
   }
 
   /* 
-  @method FindCheckpoints
-  @desc find all checkpoints in the scene. 
-  will set checkpoints to equal all checkpoints in the scene
+    @method FindCheckpoints
+    @desc find all checkpoints in the scene. 
+    will set checkpoints to equal all checkpoints in the scene
   */
   private void FindCheckpoints()
   {
     // ONLY FINDS OBJECTS THAT ARE ACTIVATED
     checkpoints = FindObjectsOfType<Checkpoint>();
+  }
+
+
+  public void DeactivateCheckpoints()
+  {
+    foreach (Checkpoint checkpoint in checkpoints)
+    {
+      checkpoint.ResetCheckPoint(); // that method exists in Checkpoint.cs script file
+    }
   }
 }
