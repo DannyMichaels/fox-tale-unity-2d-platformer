@@ -106,6 +106,8 @@ public class PlayerHealthController : MonoBehaviour
 
   public void DestroyPlayer()
   {
-    gameObject.SetActive(false); // make player dissapear
+    // gameObject.SetActive(false); // make player dissapear
+
+    LevelManager.instance.OnPlayerDeath(); // will respawn player
   }
 }

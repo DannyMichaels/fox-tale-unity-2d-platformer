@@ -17,6 +17,7 @@ public class CheckpointController : MonoBehaviour
   void Start()
   {
     FindCheckpoints();
+    InitializeSpawnPoint();
   }
 
   // Update is called once per frame
@@ -48,5 +49,10 @@ public class CheckpointController : MonoBehaviour
   public void SetSpawnPoint(Vector3 newSpawnPoint)
   {
     spawnPoint = newSpawnPoint;
+  }
+
+  private void InitializeSpawnPoint()
+  {
+    SetSpawnPoint(PlayerController.instance.transform.position); // when the level starts, make sure the spawn point is initialized
   }
 }
