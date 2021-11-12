@@ -47,6 +47,20 @@ public class PlayerHealthController : MonoBehaviour
     updateUIHeartsDisplay();
   }
 
+  // HealPlayer: used when cherry is being pickedup
+  public void HealPlayer()
+  {
+    currentHealth += 1;
+
+    // handle weird edge-case if for some reason that happens
+    if (currentHealth > maxHealth)
+    {
+      currentHealth = maxHealth;
+    }
+
+    updateUIHeartsDisplay();
+  }
+
   public void CheckPlayerDead()
   {
     if (currentHealth <= 0)

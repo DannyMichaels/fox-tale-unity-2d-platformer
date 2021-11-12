@@ -3,7 +3,7 @@ using UnityEngine;
 // for picking items up
 public class Pickup : MonoBehaviour
 {
-  public bool isGem;
+  public bool isGem, isHealingCollectible;
 
   private bool isCollected; // avoid duplicate spam collection of same item (if player has multiple colliders)
 
@@ -30,7 +30,19 @@ public class Pickup : MonoBehaviour
 
         isCollected = true;
 
-        Destroy(gameObject); // destroy the collected gem
+        Destroy(gameObject); // destroy the collected item
+      }
+
+      if (isHealingCollectible)
+      {
+        if (PlayerHealthController.instance.currentHealth != PlayerHealthController.instance.maxHealth)
+        {
+          PlayerHealthController.instance.HealPlayer();
+
+          isCollected = true;
+
+          Destroy(gameObject);
+        }
       }
     }
   }
