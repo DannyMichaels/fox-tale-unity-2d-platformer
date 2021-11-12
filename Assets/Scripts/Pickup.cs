@@ -7,6 +7,8 @@ public class Pickup : MonoBehaviour
 
   private bool isCollected; // avoid duplicate spam collection of same item (if player has multiple colliders)
 
+  public GameObject pickupEffect;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -44,6 +46,8 @@ public class Pickup : MonoBehaviour
     isCollected = true;
     Destroy(gameObject); // destroy the collected item
 
+    CreatePickupEffectAnimation();
+
     UIController.instance.UpdateGemCount(); // update the text of gems count in the ui
   }
 
@@ -57,6 +61,15 @@ public class Pickup : MonoBehaviour
       isCollected = true;
 
       Destroy(gameObject);
+
+      CreatePickupEffectAnimation();
     }
+  }
+
+
+  // CreatePickupEffectAnimation: this creates a Pickup Effect object
+  private void CreatePickupEffectAnimation()
+  {
+    Instantiate(pickupEffect, transform.position, transform.rotation); //obj, pos, rot
   }
 }
