@@ -26,24 +26,37 @@ public class Pickup : MonoBehaviour
     {
       if (isGem)
       {
-        LevelManager.instance.gemsCollected += 1;
-
-        isCollected = true;
-
-        Destroy(gameObject); // destroy the collected item
+        onGemCollected();
       }
 
       if (isHealingCollectible)
       {
-        if (PlayerHealthController.instance.currentHealth != PlayerHealthController.instance.maxHealth)
-        {
-          PlayerHealthController.instance.HealPlayer();
-
-          isCollected = true;
-
-          Destroy(gameObject);
-        }
+        onHealthCollected();
       }
+    }
+  }
+
+
+  private void onGemCollected()
+  {
+    LevelManager.instance.gemsCollected += 1;
+
+    isCollected = true;
+    Destroy(gameObject); // destroy the collected item
+
+    UIController.instance.UpdateGemCount(); // update the text of gems count in the ui
+  }
+
+
+  private void onHealthCollected()
+  {
+    if (PlayerHealthController.instance.currentHealth != PlayerHealthController.instance.maxHealth)
+    {
+      PlayerHealthController.instance.HealPlayer();
+
+      isCollected = true;
+
+      Destroy(gameObject);
     }
   }
 }

@@ -4,8 +4,12 @@ using UnityEngine.UI; // use the UI elements of the unity engine
 public class UIController : MonoBehaviour
 {
   public static UIController instance;
+
   public Image heart1, heart2, heart3;
+
   public Sprite heartFull, heartHalf, heartEmpty;
+
+  public Text gemText;
 
   private void Awake()
   {
@@ -15,7 +19,7 @@ public class UIController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-
+    UpdateGemCount(); // technically "initializing" gem count here.
   }
 
   // Update is called once per frame
@@ -24,12 +28,10 @@ public class UIController : MonoBehaviour
 
   }
 
-
   public void UpdateHealthDisplay()
   {
     int currentHealth = PlayerHealthController.instance.currentHealth;
     // renderHeartSprites(currentHealth);
-
 
     switch (currentHealth)
     {
@@ -83,6 +85,10 @@ public class UIController : MonoBehaviour
     }
   }
 
+  public void UpdateGemCount()
+  {
+    gemText.text = LevelManager.instance.gemsCollected.ToString(); // convert to string because gemsCollected is an int and .text expects a string
+  }
 
   // public void renderHeartSprites(int health)
   // {
