@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1874393478, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 523926923048012287, guid: 822cdcdde4422634c83edd8751cc31c4, type: 3}
     - target: {fileID: 9069140761462235616, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
       propertyPath: m_Name
       value: Player

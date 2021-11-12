@@ -9,9 +9,12 @@ public class PlayerHealthController : MonoBehaviour
   public int currentHealth, maxHealth;
 
   public float invincibleLength; // how long do we want our player to be invincible after he got hit.
+
   public float invincibleCounter;
 
   private SpriteRenderer theSR;
+
+  public GameObject deathEffect;
 
   // Awake is called just right before the Start function gets called (as soon as the game starts running)
   private void Awake()
@@ -65,7 +68,6 @@ public class PlayerHealthController : MonoBehaviour
   {
     if (currentHealth <= 0)
     {
-      currentHealth = 0;
       DestroyPlayer();
     }
     else
@@ -118,7 +120,10 @@ public class PlayerHealthController : MonoBehaviour
   public void DestroyPlayer()
   {
     // gameObject.SetActive(false); // make player dissapear
+    currentHealth = 0;
 
-    LevelManager.instance.OnPlayerDeath(); // will respawn player
+    Instantiate(deathEffect, transform.position, transform.rotation); // create deathEffect animation/effect thing.
+
+    LevelManager.instance.OnPlayerDeath(); // will make player dissapear and respawn
   }
 }
