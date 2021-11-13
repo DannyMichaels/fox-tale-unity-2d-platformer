@@ -1022,6 +1022,8 @@ MonoBehaviour:
   leftPoint: {fileID: 190098479}
   rightPoint: {fileID: 1981952140}
   theSR: {fileID: 140034487}
+  moveTime: 3
+  waitTime: 2
 --- !u!1 &845001811
 GameObject:
   m_ObjectHideFlags: 0
