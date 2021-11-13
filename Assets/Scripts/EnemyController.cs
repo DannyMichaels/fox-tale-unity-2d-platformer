@@ -22,10 +22,10 @@ public class EnemyController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    HandleEnemyMovement();
+    HandleEnemyMovementHorizontal();
   }
 
-  private void HandleEnemyMovement()
+  private void HandleEnemyMovementHorizontal()
   {
     if (isMovingRight)
     {
