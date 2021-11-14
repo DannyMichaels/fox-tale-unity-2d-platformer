@@ -63,15 +63,15 @@ public class AudioManager : MonoBehaviour
   /* 
     @method GetSound
     @param {string} SOUND_NAME
-    @desc takes the sfx name string, then uses the SOUNDS Dictionary/HashMap to get the index.
+    @desc takes the name of sound string, then uses the SOUNDS Dictionary/HashMap to get the index.
     @returns AudioSource result: soundEffects[index].
   */
   private AudioSource GetSound(string SOUND_NAME)
   {
     int soundToPlayIndex = SOUNDS[SOUND_NAME];
-    AudioSource result = soundEffects[soundToPlayIndex];
+    AudioSource foundSoundResult = soundEffects[soundToPlayIndex];
 
-    return result;
+    return foundSoundResult;
   }
 
   // @method ChangeSFXPitch
