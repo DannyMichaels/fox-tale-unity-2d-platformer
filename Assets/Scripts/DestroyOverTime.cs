@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// used on Death Effect and Pickup Effect
 public class DestroyOverTime : MonoBehaviour
 {
   public float lifeTime;
