@@ -38,6 +38,7 @@ public class StompBox : MonoBehaviour
     CreateDeathEffectAnimation(enemy);
     BouncePlayer();
     HandleDropCollectible(enemy);
+    PlayEnemyExplodeSFX();
   }
 
 
@@ -71,5 +72,12 @@ public class StompBox : MonoBehaviour
   private void CreateCollectible(Collider2D enemy)
   {
     Instantiate(collectible, enemy.transform.position, enemy.transform.rotation);
+  }
+
+
+  private void PlayEnemyExplodeSFX()
+  {
+    // enemy explode is element 3 in the sound effects array for Audio Manager
+    AudioManager.instance.PlaySFX(3);
   }
 }

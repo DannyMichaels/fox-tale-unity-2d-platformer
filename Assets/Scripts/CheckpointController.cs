@@ -42,7 +42,7 @@ public class CheckpointController : MonoBehaviour
   {
     foreach (Checkpoint checkpoint in checkpoints)
     {
-      checkpoint.ResetCheckPoint(); // that method exists in Checkpoint.cs script file
+      checkpoint.ResetCheckPoint(); // ResetCheckPoint: that method exists in Checkpoint.cs script file
     }
   }
 
