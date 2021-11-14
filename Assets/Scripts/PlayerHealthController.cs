@@ -45,8 +45,12 @@ public class PlayerHealthController : MonoBehaviour
 
     if (isInvincible) return; // don't damage player if he is invincible
 
-    currentHealth -= 1;
-    CheckPlayerDead();
+    currentHealth -= 1; // reduce health by 1.
+
+    CheckPlayerDead(); // check if he's dead and if he is respawn him else make him invincible for a bit. 
+
+    AudioManager.instance.PlaySFX(9); // play the player hurt SFX
+
     updateUIHeartsDisplay();
   }
 
