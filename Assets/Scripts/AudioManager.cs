@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
   public AudioSource backgroundMusic, levelEndMusic;
 
   // Dictionary: like a hashmap 
-  public Dictionary<string, int> SOUNDS = new Dictionary<string, int>
+  private static Dictionary<string, int> SOUNDS = new Dictionary<string, int>
   {
     { "BOSS_HIT", 0 },
     { "BOSS_IMPACT", 1 },
