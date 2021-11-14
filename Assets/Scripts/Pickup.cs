@@ -41,7 +41,7 @@ public class Pickup : MonoBehaviour
 
   private void onGemCollected()
   {
-    LevelManager.instance.gemsCollected += 1;
+    LevelManager.instance.gemsCollected += 1; // increment gems collected
 
     isCollected = true;
     Destroy(gameObject); // destroy the collected item

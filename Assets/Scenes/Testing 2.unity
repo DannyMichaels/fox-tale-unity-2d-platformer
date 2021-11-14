@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069140761462235618, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.64
+      value: -1.507
       objectReference: {fileID: 0}
     - target: {fileID: 9069140761462235618, guid: 3242f47a3967bce409063317bfcb0f70, type: 3}
       propertyPath: m_LocalPosition.y
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 140034488}
   m_Layer: 0
   m_Name: Frog Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
