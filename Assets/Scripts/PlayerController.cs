@@ -105,6 +105,13 @@ public class PlayerController : MonoBehaviour
   private void MakePlayerJump()
   {
     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+
+    PlayJumpSFX();
+  }
+
+  private void PlayJumpSFX()
+  {
+    AudioManager.instance.PlaySFX(10); // index 10 of soundEffects array.
   }
 
   /* 
