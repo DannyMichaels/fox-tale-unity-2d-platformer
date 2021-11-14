@@ -49,8 +49,6 @@ public class PlayerHealthController : MonoBehaviour
 
     CheckPlayerDead(); // check if he's dead and if he is respawn him else make him invincible for a bit. 
 
-    AudioManager.instance.PlaySFX("PLAYER_HURT"); // play the player hurt SFX
-
     updateUIHeartsDisplay();
   }
 
@@ -76,6 +74,7 @@ public class PlayerHealthController : MonoBehaviour
     }
     else
     {
+      AudioManager.instance.PlaySFX("PLAYER_HURT"); // play the player hurt SFX
       makePlayerInvicible(); // avoid player getting hit multiple times in a period of time (classic platformer thing)
     }
   }
@@ -127,6 +126,8 @@ public class PlayerHealthController : MonoBehaviour
     currentHealth = 0;
 
     Instantiate(deathEffect, transform.position, transform.rotation); // create deathEffect animation/effect thing.
+
+    AudioManager.instance.PlaySFX("PLAYER_DEATH"); // play the player hurt SFX
 
     LevelManager.instance.OnPlayerDeath(); // will make player dissapear and respawn
   }
