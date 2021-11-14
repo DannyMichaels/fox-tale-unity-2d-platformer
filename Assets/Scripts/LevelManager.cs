@@ -43,7 +43,9 @@ public class LevelManager : MonoBehaviour
   // https://docs.unity3d.com/Manual/Coroutines.html
   private IEnumerator RespawnCoroutine()
   {
-    DestroyPlayer();
+    DeActivatePlayer();
+
+    AudioManager.instance.PlaySFX("PLAYER_DEATH"); // play the player dead SFX
 
     // wait a certain amount of time and then respawn player
     yield return new WaitForSeconds(waitToRespawn);
@@ -53,7 +55,7 @@ public class LevelManager : MonoBehaviour
     RespawnPlayer();
   }
 
-  private void DestroyPlayer()
+  private void DeActivatePlayer()
   {
     PlayerController.instance.gameObject.SetActive(false); // make player dissapear (deactivate)
   }

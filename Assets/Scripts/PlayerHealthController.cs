@@ -125,10 +125,13 @@ public class PlayerHealthController : MonoBehaviour
     // gameObject.SetActive(false); // make player dissapear
     currentHealth = 0;
 
-    Instantiate(deathEffect, transform.position, transform.rotation); // create deathEffect animation/effect thing.
-
-    AudioManager.instance.PlaySFX("PLAYER_DEATH"); // play the player hurt SFX
+    CreateDeathEffectAnimation();
 
     LevelManager.instance.OnPlayerDeath(); // will make player dissapear and respawn
+  }
+
+  private void CreateDeathEffectAnimation()
+  {
+    Instantiate(deathEffect, transform.position, transform.rotation); // create deathEffect animation/effect thing.
   }
 }
