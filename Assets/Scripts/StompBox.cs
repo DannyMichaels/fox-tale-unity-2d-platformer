@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StompBox : MonoBehaviour
 {
+  public GameObject deathEffect;
+
+
   // Start is called before the first frame update
   void Start()
   {
@@ -21,13 +22,26 @@ public class StompBox : MonoBehaviour
     if (other.tag == "Enemy")
     {
       // Debug.Log("Hit enemy");
-      DestroyEnemy(other);
+      OnEnemyStomped(other);
     }
   }
+
+  // when enemy gets stomped on Mario style
+  private void OnEnemyStomped(Collider2D enemy)
+  {
+    DestroyEnemy(enemy);
+    CreateDeathEffectAnimation(enemy);
+  }
+
 
   private void DestroyEnemy(Collider2D enemy)
   {
     // enemy.gameObject.SetActive(false);
     enemy.transform.parent.gameObject.SetActive(false);
+  }
+
+  private void CreateDeathEffectAnimation(Collider2D enemy)
+  {
+    Instantiate(deathEffect, enemy.transform.position, enemy.transform.rotation);
   }
 }
