@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
   public float knockBackLength, knockBackForce;
   private float knockBackCounter;
 
+  // bounceForce: bounce force after stomping enemy
+  public float bounceForce;
 
   private void Awake()
   {
@@ -163,5 +165,10 @@ public class PlayerController : MonoBehaviour
     {
       theRB.velocity = new Vector2(knockBackForce, theRB.velocity.y); // a little x axis knockback (push player to right)
     }
+  }
+
+  public void Bounce()
+  {
+    theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
   }
 }

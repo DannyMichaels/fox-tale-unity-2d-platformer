@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe3768c76b923b469da604127df5377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 523926923048012287, guid: 822cdcdde4422634c83edd8751cc31c4, type: 3}
 --- !u!1 &9069140760925308957
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
     m_Bits: 64
   knockBackLength: 0.25
   knockBackForce: 5
+  bounceForce: 8
 --- !u!95 &9069140761462235622
 Animator:
   serializedVersion: 3

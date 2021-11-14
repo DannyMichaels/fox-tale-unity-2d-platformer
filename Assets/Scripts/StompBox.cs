@@ -31,6 +31,7 @@ public class StompBox : MonoBehaviour
   {
     DestroyEnemy(enemy);
     CreateDeathEffectAnimation(enemy);
+    BouncePlayer();
   }
 
 
@@ -43,5 +44,10 @@ public class StompBox : MonoBehaviour
   private void CreateDeathEffectAnimation(Collider2D enemy)
   {
     Instantiate(deathEffect, enemy.transform.position, enemy.transform.rotation);
+  }
+
+  private void BouncePlayer()
+  {
+    PlayerController.instance.Bounce();
   }
 }
