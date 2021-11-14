@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    // DetectGamepad();
+
   }
 
   // Update is called once per frame
@@ -73,6 +73,7 @@ public class MainMenu : MonoBehaviour
 
 
   // if we have a gamepad we need to replace clickable buttons with something else that a controller can use.
+  // this is actually not necessary at all, check PauseMenu.cs to see how to handle gamepad controls on buttons and menus.
   private void OnGamepadDetectionChange()
   {
     if (isGamepadConnected)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PauseMenu : MonoBehaviour
 
   public GameObject pauseScreen;
   public bool isPaused;
+
+  public GameObject resumeButton, levelSelectButton, mainMenuButton;
 
   // Start is called before the first frame update
   void Start()
@@ -45,7 +48,13 @@ public class PauseMenu : MonoBehaviour
       // pause
       isPaused = true;
       pauseScreen.SetActive(true);
+
       FreezeGame();
+
+      EventSystem.current.SetSelectedGameObject(null); // clear selected object
+
+      EventSystem.current.SetSelectedGameObject(resumeButton); // highlight the resume button when opening (so controller can use this)
+
     }
   }
 
