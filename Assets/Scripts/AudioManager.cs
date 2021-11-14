@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
 
   public AudioSource[] soundEffects;
 
+  public AudioSource backgroundMusic, levelEndMusic;
+
   // Dictionary: like a hashmap 
   public Dictionary<string, int> SOUNDS = new Dictionary<string, int>
   {
@@ -59,12 +61,11 @@ public class AudioManager : MonoBehaviour
     soundToPlay.Play(); // play the sound
   }
 
-
   /* 
     @method GetSound
     @param {string} SOUND_NAME
     @desc takes the name of sound string, then uses the SOUNDS Dictionary/HashMap to get the index.
-    @returns AudioSource result: soundEffects[index].
+    @returns AudioSource foundSoundResult: soundEffects[index].
   */
   private AudioSource GetSound(string SOUND_NAME)
   {
@@ -75,10 +76,11 @@ public class AudioManager : MonoBehaviour
   }
 
   // @method ChangeSFXPitch
-  // @desc give the selected SFX some variety by giving it a new random pitch from .9f to 1.1f
+  //  @param {AudioSource} soundEffect
+  // @desc give the passed SFX some variety by giving it a new random pitch from .9f to 1.1f
   // example: collecting multiple gems at same time, change pitch every time
-  private void ChangeSFXPitch(AudioSource sfx)
+  private void ChangeSFXPitch(AudioSource soundEffect)
   {
-    sfx.pitch = Random.Range(.9f, 1.1f);
+    soundEffect.pitch = Random.Range(.9f, 1.1f);
   }
 }
