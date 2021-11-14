@@ -177,5 +177,7 @@ public class PlayerController : MonoBehaviour
   public void Bounce()
   {
     theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
+
+    // PlayJumpSFX();
   }
 }
