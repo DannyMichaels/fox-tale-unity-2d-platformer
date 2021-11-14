@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06496686, y: 0.32104194}
+  m_Offset: {x: -0.059007406, y: 0.40101087}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8604413, y: 0.51071286}
+  m_Size: {x: 0.5578, y: 0.41888}
   m_EdgeRadius: 0
 --- !u!114 &8709467105363563773
 MonoBehaviour:
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 523926923048012287, guid: 822cdcdde4422634c83edd8751cc31c4, type: 3}
+  collectible: {fileID: 8422399456621919922, guid: c4aa6c9d1cf319a4ca44a0405bb53a24, type: 3}
+  chanceToDrop: 25
 --- !u!1 &9069140760925308957
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +250,7 @@ MonoBehaviour:
     m_Bits: 64
   knockBackLength: 0.25
   knockBackForce: 5
-  bounceForce: 8
+  bounceForce: 15
 --- !u!95 &9069140761462235622
 Animator:
   serializedVersion: 3

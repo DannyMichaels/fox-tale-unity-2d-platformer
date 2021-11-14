@@ -5,7 +5,7 @@ public class StompBox : MonoBehaviour
   public GameObject deathEffect;
 
   public GameObject collectible; // drop collectible when enemy destroyed.
-  public float chanceToDrop; // chance to spawn random collectible
+  [Range(0, 100)] public float chanceToDrop; // chance to spawn random collectible (has to be in range from 0 to 100)
 
 
   // Start is called before the first frame update
