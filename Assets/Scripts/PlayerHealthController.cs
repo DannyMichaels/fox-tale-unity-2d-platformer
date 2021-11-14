@@ -35,7 +35,7 @@ public class PlayerHealthController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    HandleInvincibility();
+    HandlePlayerInvincibility();
   }
 
 
@@ -70,16 +70,21 @@ public class PlayerHealthController : MonoBehaviour
   {
     if (currentHealth <= 0)
     {
-      DestroyPlayer();
+      HandlePlayerDeath();
     }
     else
     {
-      AudioManager.instance.PlaySFX("PLAYER_HURT"); // play the player hurt SFX
-      makePlayerInvicible(); // avoid player getting hit multiple times in a period of time (classic platformer thing)
+      OnPlayerHurt();
     }
   }
 
-  public void makePlayerInvicible()
+  private void OnPlayerHurt()
+  {
+    MakePlayerInvicible(); // avoid player getting hit multiple times in a period of time (classic platformer thing)
+    AudioManager.instance.PlaySFX("PLAYER_HURT"); // play the player hurt SFX
+  }
+
+  private void MakePlayerInvicible()
   {
     // the logic
     invincibleCounter = invincibleLength;
@@ -88,7 +93,7 @@ public class PlayerHealthController : MonoBehaviour
     PlayerController.instance.KnockBack();
   }
 
-  public void HandleInvincibility()
+  private void HandlePlayerInvincibility()
   {
     bool isInvincible = invincibleCounter > 0;
 
@@ -120,7 +125,7 @@ public class PlayerHealthController : MonoBehaviour
     UIController.instance.UpdateHealthDisplay();
   }
 
-  public void DestroyPlayer()
+  private void HandlePlayerDeath()
   {
     // gameObject.SetActive(false); // make player dissapear
     currentHealth = 0;
