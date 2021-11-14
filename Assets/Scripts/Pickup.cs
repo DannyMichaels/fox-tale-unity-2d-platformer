@@ -48,7 +48,7 @@ public class Pickup : MonoBehaviour
 
     CreatePickupEffectAnimation();
 
-    AudioManager.instance.PlaySFX(6); // play the gem collected SFX
+    AudioManager.instance.PlaySFX("PICKUP_GEM"); // play the gem collected SFX
 
     UIController.instance.UpdateGemCount(); // update the text of gems count in the ui
   }
@@ -67,7 +67,7 @@ public class Pickup : MonoBehaviour
 
       CreatePickupEffectAnimation();
 
-      AudioManager.instance.PlaySFX(7); // play the health collected SFX
+      AudioManager.instance.PlaySFX("PICKUP_HEALTH"); // play the health collected SFX
     }
   }
 

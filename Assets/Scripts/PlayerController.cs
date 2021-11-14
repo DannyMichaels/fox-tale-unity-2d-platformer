@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
   private void PlayJumpSFX()
   {
-    AudioManager.instance.PlaySFX(10); // index 10 of soundEffects array.
+    AudioManager.instance.PlaySFX("PLAYER_JUMP"); // index 10 of soundEffects array.
   }
 
   /* 

@@ -49,7 +49,7 @@ public class PlayerHealthController : MonoBehaviour
 
     CheckPlayerDead(); // check if he's dead and if he is respawn him else make him invincible for a bit. 
 
-    AudioManager.instance.PlaySFX(9); // play the player hurt SFX
+    AudioManager.instance.PlaySFX("PLAYER_HURT"); // play the player hurt SFX
 
     updateUIHeartsDisplay();
   }

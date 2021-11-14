@@ -78,6 +78,6 @@ public class StompBox : MonoBehaviour
   private void PlayEnemyExplodeSFX()
   {
     // enemy explode is element 3 in the sound effects array for Audio Manager
-    AudioManager.instance.PlaySFX(3);
+    AudioManager.instance.PlaySFX("ENEMY_EXPLODE");
   }
 }
