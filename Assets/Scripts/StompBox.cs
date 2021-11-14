@@ -24,6 +24,8 @@ public class StompBox : MonoBehaviour
   {
     if (other.tag == "Enemy")
     {
+      if (PlayerController.instance.isOnGround) return; // this shouldn't continue if player is on ground.
+
       // Debug.Log("Hit enemy");
       OnEnemyStomped(other);
     }

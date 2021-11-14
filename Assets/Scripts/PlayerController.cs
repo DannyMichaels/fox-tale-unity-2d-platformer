@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
   public float moveSpeed;
   public Rigidbody2D theRB; // the rigid body
   public float jumpForce;
-  private bool isOnGround; // keep track of wether player is on ground or not.
+  public bool isOnGround; // keep track of wether player is on ground or not.
   public Transform groundCheckPoint;
   public LayerMask whatIsGround;
   private bool canDoubleJump;
