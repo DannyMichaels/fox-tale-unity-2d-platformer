@@ -13,15 +13,13 @@ public class PauseMenu : MonoBehaviour
   public GameObject pauseScreen;
   public bool isPaused;
 
-  public GameObject resumeButton, levelSelectButton, mainMenuButton;
+  public GameObject resumeButton; // keeping reference of button so I can highlight with gamepad
 
   // Start is called before the first frame update
   void Start()
   {
 
   }
-
-
 
   // Update is called once per frame
   void Update()
@@ -31,8 +29,6 @@ public class PauseMenu : MonoBehaviour
       PauseUnpause();
     }
   }
-
-
 
   public void PauseUnpause()
   {
@@ -51,21 +47,23 @@ public class PauseMenu : MonoBehaviour
 
       FreezeGame();
 
+
+      // for gamepad
       EventSystem.current.SetSelectedGameObject(null); // clear selected object
-
       EventSystem.current.SetSelectedGameObject(resumeButton); // highlight the resume button when opening (so controller can use this)
-
     }
   }
 
   public void LevelSelect()
   {
     SceneManager.LoadScene(levelSelect);
+    ResumeGame();
   }
 
   public void MainMenu()
   {
     SceneManager.LoadScene(mainMenu);
+    ResumeGame();
   }
 
   private void FreezeGame()

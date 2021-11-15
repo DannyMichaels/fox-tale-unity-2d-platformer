@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
   void Start()
   {
     // setLastXAndYPositions();
-    setLastCameraPosition();
+    SetLastCameraPosition();
   }
 
   // Update is called once per frame
@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     FollowTargetVerticalAndHorizontal();
     MakeBackgroundFollowCamera();
     // setLastXAndYPositions();
-    setLastCameraPosition();
+    SetLastCameraPosition();
   }
 
   // void FollowTargetHorizontal()
@@ -32,6 +32,7 @@ public class CameraController : MonoBehaviour
   //   transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
   // }
 
+  // follow the target, in this game the target is the Player unless otherwise noted.
   void FollowTargetVerticalAndHorizontal()
   {
     /* transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
@@ -66,7 +67,7 @@ public class CameraController : MonoBehaviour
   //   lastYPosition = transform.position.y;
   // }
 
-  void setLastCameraPosition()
+  void SetLastCameraPosition()
   {
     lastPosition = transform.position; // get x and y, because this is Vector2 and not 3 it will chop off the Z value
   }
