@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviour
 
   public GameObject resumeButton; // keeping reference of button so I can highlight with gamepad
 
-
   void Awake()
   {
     instance = this;
@@ -36,6 +35,8 @@ public class PauseMenu : MonoBehaviour
     {
       PauseUnpause();
     }
+
+    HandleLoseFocus();
   }
 
   public void PauseUnpause()
@@ -54,7 +55,6 @@ public class PauseMenu : MonoBehaviour
       pauseScreen.SetActive(true);
 
       FreezeGame();
-
 
       // for gamepad
       EventSystem.current.SetSelectedGameObject(null); // clear selected object
@@ -82,5 +82,15 @@ public class PauseMenu : MonoBehaviour
   private void ResumeGame()
   {
     Time.timeScale = 1f;
+  }
+
+  // @method HandleLoseFocus
+  // @desc handle an edge case where user clicks away from buttons and buttons get unhighlighted which means controller can't work
+  private void HandleLoseFocus()
+  {
+    if (!EventSystem.current.currentSelectedGameObject && isPaused)
+    {
+      EventSystem.current.SetSelectedGameObject(resumeButton); // highlight the resume button when opening (so controller can use this)
+    }
   }
 }
