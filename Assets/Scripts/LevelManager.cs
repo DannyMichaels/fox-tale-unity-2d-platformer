@@ -26,19 +26,11 @@ public class LevelManager : MonoBehaviour
 
   }
 
-  public void OnPlayerDeath()
+  public void StartPlayerRespawn()
   {
     // will deactivate player, wait a couple seconds, then respawn.
     StartCoroutine(RespawnCoroutine());
   }
-
-  public void RespawnPlayer()
-  {
-    PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;    // respawn player in the checkpoint spawnPoint Vector3
-    PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth; // reset health
-    UIController.instance.UpdateHealthDisplay(); // reset the hearts UI
-  }
-
 
   // https://docs.unity3d.com/Manual/Coroutines.html
   private IEnumerator RespawnCoroutine()
@@ -47,13 +39,32 @@ public class LevelManager : MonoBehaviour
 
     AudioManager.instance.PlaySFX("PLAYER_DEATH"); // play the player dead SFX
 
-    // wait a certain amount of time and then respawn player
-    yield return new WaitForSeconds(waitToRespawn);
+    float fadeWaitTime = 1f / UIController.instance.fadeSpeed; // the amount of time it would take the screen to fade
+
+
+    // if no fade effects exist, just keep waitToRespawn and remove the subtraction of fadeWaitTime 
+    yield return new WaitForSeconds(waitToRespawn - fadeWaitTime);  // wait a certain amount of time and then continue the function 
+
+    UIController.instance.FadeToBlack(); // fade to black
+
+    // then wait the amount that it should take to fade.
+    yield return new WaitForSeconds(fadeWaitTime + .2f); // add a bit more time with .2f (fraction of a section) so it stays fully black
+
+    // continue the function and respawn the player
+
+    UIController.instance.FadeFromBlack(); // fade out from black back to normal
 
     ActivatePlayer();
-
     RespawnPlayer();
   }
+
+  private void RespawnPlayer()
+  {
+    PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;    // respawn player in the checkpoint spawnPoint Vector3
+    PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth; // reset health
+    UIController.instance.UpdateHealthDisplay(); // reset the hearts UI
+  }
+
 
   private void DeActivatePlayer()
   {

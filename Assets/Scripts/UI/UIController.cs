@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
 
   public Image fadeScreen;
   public float fadeSpeed;
-  public bool shouldFadeToBlack, shouldFadeFromBlack;
+  private bool shouldFadeToBlack, shouldFadeFromBlack;
 
   private void Awake()
   {
@@ -103,18 +103,18 @@ public class UIController : MonoBehaviour
     if (shouldFadeToBlack)
     // fade into black screen
     {
-      FadeToBlack();
+      HandleFadeToBlack();
     }
 
 
     if (shouldFadeFromBlack)
     {
-      FadeFromBlack();
+      HandleFadeFromBlack();
     }
   }
 
 
-  private void FadeToBlack()
+  private void HandleFadeToBlack()
   {
     // multiply fadeSpeed by how long it takes each update frame to go by (every update frame make it move a fraction torwards that)
     float newAlphaValue = Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime); // change alpha value (opacity)
@@ -134,7 +134,7 @@ public class UIController : MonoBehaviour
     }
   }
 
-  private void FadeFromBlack()
+  private void HandleFadeFromBlack()
   {
     // fade away from black screen back to normal
     float newAlphaValue = Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime); // change alpha value (opacity)
@@ -152,5 +152,17 @@ public class UIController : MonoBehaviour
     {
       shouldFadeFromBlack = false;
     }
+  }
+
+  public void FadeToBlack()
+  {
+    shouldFadeToBlack = true;
+    shouldFadeFromBlack = false;
+  }
+
+  public void FadeFromBlack()
+  {
+    shouldFadeToBlack = false;
+    shouldFadeFromBlack = true;
   }
 }
