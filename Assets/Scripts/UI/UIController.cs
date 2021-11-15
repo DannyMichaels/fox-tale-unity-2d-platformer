@@ -11,6 +11,10 @@ public class UIController : MonoBehaviour
 
   public Text gemText;
 
+  public Image fadeScreen;
+  public float fadeSpeed;
+  public bool shouldFadeToBlack, shouldFadeFromBlack;
+
   private void Awake()
   {
     instance = this;
@@ -25,7 +29,7 @@ public class UIController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-
+    HandleFadeScreen();
   }
 
   public void UpdateHealthDisplay()
@@ -85,25 +89,68 @@ public class UIController : MonoBehaviour
     }
   }
 
+
   public void UpdateGemCount()
   {
+    // this method is used in Start() and also used in Pickup.cs 
     gemText.text = LevelManager.instance.gemsCollected.ToString(); // convert to string because gemsCollected is an int and .text expects a string
   }
 
-  // public void renderHeartSprites(int health)
-  // {
-  //   Image[] hearts = { heart1, heart2, heart3 };
 
-  //   for (int i = 0; i < PlayerHealthController.instance.maxHealth; i++)
-  //   {
-  //     if (i >= health)
-  //     {
-  //       hearts[i].sprite = heartEmpty;
-  //     }
-  //     else
-  //     {
-  //       hearts[i].sprite = heartFull;
-  //     }
-  //   }
-  // }
+  private void HandleFadeScreen()
+  {
+
+    if (shouldFadeToBlack)
+    // fade into black screen
+    {
+      FadeToBlack();
+    }
+
+
+    if (shouldFadeFromBlack)
+    {
+      FadeFromBlack();
+    }
+  }
+
+
+  private void FadeToBlack()
+  {
+    // multiply fadeSpeed by how long it takes each update frame to go by (every update frame make it move a fraction torwards that)
+    float newAlphaValue = Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime); // change alpha value (opacity)
+
+    fadeScreen.color = new Color(
+      fadeScreen.color.r,
+      fadeScreen.color.g,
+      fadeScreen.color.b,
+      newAlphaValue
+    );
+
+
+    // if faded all the way in to black
+    if (fadeScreen.color.a == 1f)
+    {
+      shouldFadeToBlack = false;
+    }
+  }
+
+  private void FadeFromBlack()
+  {
+    // fade away from black screen back to normal
+    float newAlphaValue = Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime); // change alpha value (opacity)
+
+    fadeScreen.color = new Color(
+      fadeScreen.color.r,
+      fadeScreen.color.g,
+      fadeScreen.color.b,
+      newAlphaValue
+    );
+
+
+    // if faded all the way in to black
+    if (fadeScreen.color.a == 0f)
+    {
+      shouldFadeFromBlack = false;
+    }
+  }
 }
