@@ -6417,26 +6417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1513889785, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -134219676025352904, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202277942812673, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202277944618044, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278041806229, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278129825703, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
     - target: {fileID: 2687202278455392344, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -6485,42 +6465,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 2687202278537806452, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278555473088, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278647799455, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278879844634, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202278942642928, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -134219676025352904, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202279407186146, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202279418288303, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202279550436994, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
-    - target: {fileID: 2687202279943623081, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 8158362358001987394, guid: e1cfb3b6b41b58c408abe094f62581c9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83ee8eb1fba0d99498536f09de9314e1, type: 3}
 --- !u!1001 &3124090711575820161

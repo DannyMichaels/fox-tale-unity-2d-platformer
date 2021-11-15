@@ -36,18 +36,22 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    bool isKnockedBack = CheckIsKnockedBack();
+    bool isKnockedBack = knockBackCounter > 0;
 
-    if (isKnockedBack)
+    if (!PauseMenu.instance.isPaused) // only allow these if isn't paused
     {
-      UseKnockBackEffect();
+      if (isKnockedBack)
+      {
+        UseKnockBackEffect();
+      }
+      else
+      {
+        HandleMoveHorizontal();
+        HandleJump();
+        HandleSpriteFacingDirection();
+      }
     }
-    else
-    {
-      HandleMoveHorizontal();
-      HandleJump();
-      HandleSpriteFacingDirection();
-    }
+
     UseAnimationEffect();
   }
 
@@ -149,11 +153,7 @@ public class PlayerController : MonoBehaviour
     animator.SetTrigger("hurt");
   }
 
-  private bool CheckIsKnockedBack()
-  {
-    // return if player is being knocked back
-    return knockBackCounter > 0;
-  }
+
 
   // this runs when the player is being knocked back (isKnockedBack is true)
   private void UseKnockBackEffect()

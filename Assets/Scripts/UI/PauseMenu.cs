@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
+  public static PauseMenu instance;
+
   // string levelSelect, mainMenu: the name of the component in the Scene (use inspector tab to add).
   // for example: in scene Testing 2 the string for mainMenu is Main_Menu
   public string levelSelect, mainMenu;
@@ -14,6 +16,12 @@ public class PauseMenu : MonoBehaviour
   public bool isPaused;
 
   public GameObject resumeButton; // keeping reference of button so I can highlight with gamepad
+
+
+  void Awake()
+  {
+    instance = this;
+  }
 
   // Start is called before the first frame update
   void Start()
