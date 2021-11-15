@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour
   void Start()
   {
     UpdateGemCount(); // technically "initializing" gem count here.
+    FadeFromBlack(); // alpha for fade is initially 1f, so we want to fade out when mounted.
   }
 
   // Update is called once per frame
