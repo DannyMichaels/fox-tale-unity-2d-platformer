@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
   void Start()
   {
     EventSystem.current.SetSelectedGameObject(clickableButtons[0]);
+    DetectGamepad();
   }
 
   // Update is called once per frame
