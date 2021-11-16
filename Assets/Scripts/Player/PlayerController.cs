@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
   {
     animator = GetComponent<Animator>();
     theSR = GetComponent<SpriteRenderer>();
+
+    HandleErrors();
   }
 
   // Update is called once per frame
@@ -181,5 +183,13 @@ public class PlayerController : MonoBehaviour
     theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
 
     // PlayJumpSFX();
+  }
+
+  private void HandleErrors()
+  {
+    if (!PauseMenu.instance)
+    {
+      Debug.LogError("No PauseMenu provided!");
+    }
   }
 }

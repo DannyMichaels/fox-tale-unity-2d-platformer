@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176d53ec11eb142449df58d2653e9a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: Testing 2
+  startScene: Level_1
   clickableButtons:
   - {fileID: 1587881067}
   - {fileID: 646965335}
