@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
   // bounceForce: bounce force after stomping enemy
   public float bounceForce;
 
+  public bool stopInput;
+
   private void Awake()
   {
     instance = this;
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
   {
     bool isKnockedBack = knockBackCounter > 0;
 
-    if (!PauseMenu.instance.isPaused) // only allow these if isn't paused
+    if (!PauseMenu.instance.isPaused && !stopInput) // only allow these if isn't paused and input isn't stopped
     {
       if (isKnockedBack)
       {

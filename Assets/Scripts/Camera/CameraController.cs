@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+  public static CameraController instance; // used to access stopFollowingTarget in LevelManager script
+
   public Transform target; // for example: the target is the player
   public Transform farBackground, middleBackground;
 
@@ -10,6 +12,14 @@ public class CameraController : MonoBehaviour
   // private float lastXPosition;
   // private float lastYPosition;
   private Vector2 lastPosition;
+
+  public bool stopFollowingTarget; // stop following player when level ends.
+
+
+  void Awake()
+  {
+    instance = this;
+  }
 
   // Start is called before the first frame update
   void Start()
@@ -21,9 +31,12 @@ public class CameraController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    // don't run these if stopFollowingTarget is true
+    if (stopFollowingTarget) return;
+
     FollowTargetVerticalAndHorizontal();
     MakeBackgroundFollowCamera();
-    // setLastXAndYPositions();
+    // setLastXAndYPositions(); // replaced with SetLastCameraPosition 
     SetLastCameraPosition();
   }
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UI; // This is so that it should find the Text component
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -19,13 +20,14 @@ public class MainMenu : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-
+    EventSystem.current.SetSelectedGameObject(clickableButtons[0]);
   }
 
   // Update is called once per frame
   void Update()
   {
     DetectGamepad();
+    HandleLoseFocus();
   }
 
   public void StartGame()
@@ -174,6 +176,20 @@ public class MainMenu : MonoBehaviour
     else
     {
       selectButtonExit.GetComponentInChildren<Text>().color = Color.white;
+    }
+  }
+
+
+
+
+
+  // @method HandleLoseFocus
+  // @desc handle an edge case where user clicks away from buttons and buttons get unhighlighted which means controller can't work
+  private void HandleLoseFocus()
+  {
+    if (!EventSystem.current.currentSelectedGameObject)
+    {
+      EventSystem.current.SetSelectedGameObject(clickableButtons[0]); // highlight the resume button when opening (so controller can use this)
     }
   }
 }
