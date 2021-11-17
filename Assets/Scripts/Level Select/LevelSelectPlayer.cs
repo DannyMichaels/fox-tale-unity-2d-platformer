@@ -17,21 +17,21 @@ public class LevelSelectPlayer : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    SetPlayerPosition();
-    HandleMoveOnButtonPress();
+    HandleMovePlayer();
+    SetCurrentPointOnButtonPress();
   }
 
-  private void HandleMoveOnButtonPress()
+  private void SetCurrentPointOnButtonPress()
   {
     if (!(Vector3.Distance(transform.position, currentPoint.transform.position) < .1f)) return; // make sure the player is stopping when hitting a point.
 
     // GetAxis will gradually move from 0 to 1, GetAxis will be exactly  what the player is pressing as soon as pressed.
-    bool moveRight = Input.GetAxisRaw("Horizontal") > .5f;
-    bool moveLeft = Input.GetAxisRaw("Horizontal") < -.5f;
-    bool moveUp = Input.GetAxisRaw("Vertical") > .5f;
-    bool moveDown = Input.GetAxisRaw("Vertical") < -.5f;
+    bool rightPressed = Input.GetAxisRaw("Horizontal") > .5f;
+    bool leftPressed = Input.GetAxisRaw("Horizontal") < -.5f;
+    bool upPressed = Input.GetAxisRaw("Vertical") > .5f;
+    bool downPressed = Input.GetAxisRaw("Vertical") < -.5f;
 
-    if (moveRight)
+    if (rightPressed)
     {
       if (currentPoint.right != null)
       {
@@ -39,7 +39,7 @@ public class LevelSelectPlayer : MonoBehaviour
       }
     }
 
-    else if (moveLeft)
+    else if (leftPressed)
     {
       if (currentPoint.left != null)
       {
@@ -47,7 +47,7 @@ public class LevelSelectPlayer : MonoBehaviour
       }
     }
 
-    else if (moveUp)
+    else if (upPressed)
     {
       if (currentPoint.up != null)
       {
@@ -55,7 +55,7 @@ public class LevelSelectPlayer : MonoBehaviour
       }
     }
 
-    else if (moveDown)
+    else if (downPressed)
     {
       if (currentPoint.down != null)
       {
@@ -70,7 +70,7 @@ public class LevelSelectPlayer : MonoBehaviour
     currentPoint = nextPoint;
   }
 
-  private void SetPlayerPosition()
+  private void HandleMovePlayer()
   {
     transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, moveSpeed * Time.deltaTime);
   }
