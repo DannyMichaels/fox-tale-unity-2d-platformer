@@ -20,6 +20,12 @@ public class LevelSelectCameraController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+
+  }
+
+  // LateUpdate happens just after Update is called on all scripts (so it will follow AFTER the player has moved)
+  void LateUpdate()
+  {
     MakeCameraFollowTarget();
   }
 
