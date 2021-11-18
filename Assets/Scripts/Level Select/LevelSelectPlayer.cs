@@ -8,6 +8,10 @@ public class LevelSelectPlayer : MonoBehaviour
 
   public float moveSpeed = 10f;
 
+  private bool isLevelLoading;
+
+  public LevelSelectManager theManager;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -19,11 +23,13 @@ public class LevelSelectPlayer : MonoBehaviour
   {
     HandleMovePlayer();
     SetCurrentPointOnButtonPress();
+    HandleSelectLevel();
   }
 
   private void SetCurrentPointOnButtonPress()
   {
     if (!(Vector3.Distance(transform.position, currentPoint.transform.position) < .1f)) return; // make sure the player is stopping when hitting a point.
+    if (isLevelLoading) return; // if level is loading don't allow to move around
 
     // GetAxis will gradually move from 0 to 1, GetAxis will be exactly  what the player is pressing as soon as pressed.
     bool rightPressed = Input.GetAxisRaw("Horizontal") > .5f;
@@ -73,5 +79,17 @@ public class LevelSelectPlayer : MonoBehaviour
   private void HandleMovePlayer()
   {
     transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, moveSpeed * Time.deltaTime);
+  }
+
+  public void HandleSelectLevel()
+  {
+    if (!currentPoint.isLevel) return;
+
+    if (Input.GetButtonDown("Jump"))
+    {
+      isLevelLoading = true;
+
+      theManager.LoadLevel();
+    }
   }
 }
