@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
   // https://docs.unity3d.com/Manual/Coroutines.html
   private IEnumerator RespawnCoroutine()
   {
-    DeActivatePlayer();
+    PlayerController.instance.gameObject.SetActive(false); // make player dissapear (deactivate)
 
     AudioManager.instance.PlaySFX("PLAYER_DEATH"); // play the player dead SFX
 
@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
 
     UIController.instance.FadeFromBlack(); // fade out from black back to normal
 
-    ActivatePlayer();
+    PlayerController.instance.gameObject.SetActive(true); // make player appear (activate)
     RespawnPlayer();
     UIController.instance.UpdateHealthDisplay(); // reset the hearts UI
   }
@@ -67,18 +67,6 @@ public class LevelManager : MonoBehaviour
     PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;    // respawn player in the checkpoint spawnPoint Vector3
     PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth; // reset health
   }
-
-
-  private void DeActivatePlayer()
-  {
-    PlayerController.instance.gameObject.SetActive(false); // make player dissapear (deactivate)
-  }
-
-  private void ActivatePlayer()
-  {
-    PlayerController.instance.gameObject.SetActive(true); // make player appear (activate)
-  }
-
 
   public void EndLevel()
   {
@@ -98,6 +86,8 @@ public class LevelManager : MonoBehaviour
 
     yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + .25f);  // wait for it to fade, then wait another quarter of a second
 
+
+    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlocked", 1); // unlock the completed level which also unlocks next lvl due to levelToCheck var (ex: level1-1_unlocked), SetInt(key, value)  
 
     // load into the next level
     SceneManager.LoadScene(levelToLoad);

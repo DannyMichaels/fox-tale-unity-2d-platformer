@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: Level1-3
       objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToCheck
+      value: Level1-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
 --- !u!4 &1990059 stripped
@@ -1298,6 +1302,10 @@ PrefabInstance:
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: levelToLoad
       value: Level1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToCheck
+      value: Level1-1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
@@ -16104,6 +16112,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: levelToLoad
+      value: Level1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToCheck
       value: Level1-1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitToRespawn: 2
   gemsCollected: 0
-  levelToLoad: Main_Menu
+  levelToLoad: Level Select
