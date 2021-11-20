@@ -73,6 +73,7 @@ public class LevelSelectPlayer : MonoBehaviour
 
   public void SetNextPoint(MapPoint nextPoint)
   {
+    // if (nextPoint.isLevel && nextPoint.isLocked) return; // don't move if level is locked.
     currentPoint = nextPoint;
   }
 
@@ -83,7 +84,9 @@ public class LevelSelectPlayer : MonoBehaviour
 
   public void HandleSelectLevel()
   {
-    if (!currentPoint.isLevel) return;
+    if (!currentPoint.isLevel) return; // don't continue if it's not a level
+    if (currentPoint.isLocked) return; // don't continue if the level is locked
+    if (currentPoint.levelToLoad == "") return; // don't continue if there isn't a level to load
 
     if (Input.GetButtonDown("Jump"))
     {
