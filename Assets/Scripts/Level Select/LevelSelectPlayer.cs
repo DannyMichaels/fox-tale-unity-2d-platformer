@@ -75,6 +75,7 @@ public class LevelSelectPlayer : MonoBehaviour
   {
     // if (nextPoint.isLevel && nextPoint.isLocked) return; // don't move if level is locked.
     currentPoint = nextPoint;
+    LevelSelectUIController.instance.HideInfoPanel();
   }
 
   private void HandleMovePlayer()
@@ -87,6 +88,8 @@ public class LevelSelectPlayer : MonoBehaviour
     if (!currentPoint.isLevel) return; // don't continue if it's not a level
     if (currentPoint.isLocked) return; // don't continue if the level is locked
     if (currentPoint.levelToLoad == "") return; // don't continue if there isn't a level to load
+
+    LevelSelectUIController.instance.ShowInfoPanel(currentPoint); // if we're at this point then show the info panel
 
     if (Input.GetButtonDown("Jump"))
     {

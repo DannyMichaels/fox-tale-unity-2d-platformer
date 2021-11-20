@@ -11,6 +11,9 @@ public class LevelSelectUIController : MonoBehaviour
   public float fadeSpeed;
   private bool shouldFadeToBlack, shouldFadeFromBlack;
 
+  public GameObject levelInfoPanel;
+
+  public Text levelName;
 
   void Awake()
   {
@@ -97,5 +100,17 @@ public class LevelSelectUIController : MonoBehaviour
   {
     shouldFadeToBlack = false;
     shouldFadeFromBlack = true;
+  }
+
+  public void ShowInfoPanel(MapPoint levelInfo)
+  {
+    levelName.text = levelInfo.levelName;
+
+    levelInfoPanel.SetActive(true);
+  }
+
+  public void HideInfoPanel()
+  {
+    levelInfoPanel.SetActive(false);
   }
 }
