@@ -38,6 +38,12 @@ public class MapPoint : MonoBehaviour
           }
         }
       }
+
+      // line 43: edgecase: when user never completed level 1, pauses and goes to level select, make sure that lvl 1 is not locked because it wasn't completed
+      if (levelToLoad == levelToCheck)
+      {
+        isLocked = false;
+      }
     }
   }
 }
