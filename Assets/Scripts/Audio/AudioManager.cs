@@ -83,4 +83,10 @@ public class AudioManager : MonoBehaviour
   {
     soundEffect.pitch = Random.Range(.9f, 1.1f);
   }
+
+  public void PlayEndLevelMusic()
+  {
+    backgroundMusic.Stop();
+    levelEndMusic.Play();
+  }
 }

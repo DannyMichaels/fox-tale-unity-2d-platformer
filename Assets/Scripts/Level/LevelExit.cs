@@ -18,7 +18,7 @@ public class LevelExit : MonoBehaviour
   {
     if (other.CompareTag("Player"))
     {
-      LevelManager.instance.EndLevel();
+      LevelManager.instance.EndLevel(); // start level end coroutine
     }
   }
 }

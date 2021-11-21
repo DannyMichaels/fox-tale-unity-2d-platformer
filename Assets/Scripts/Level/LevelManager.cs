@@ -75,14 +75,17 @@ public class LevelManager : MonoBehaviour
 
   public IEnumerator EndLevelCoroutine()
   {
+
     PlayerController.instance.stopInput = true; // stop player input
     CameraController.instance.stopFollowingTarget = true; // stop following the player
 
     UIController.instance.levelCompleteText.SetActive(true); // show lvl complete text
 
-    yield return new WaitForSeconds(1.5f);
+    AudioManager.instance.PlayEndLevelMusic(); // play victory music
 
-    UIController.instance.FadeToBlack();
+    yield return new WaitForSeconds(4.5f); // wait for music to end
+
+    UIController.instance.FadeToBlack(); // then fade to black
 
     yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + .25f);  // wait for it to fade, then wait another quarter of a second
 

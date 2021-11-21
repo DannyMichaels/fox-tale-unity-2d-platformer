@@ -76,6 +76,7 @@ public class LevelSelectPlayer : MonoBehaviour
     // if (nextPoint.isLevel && nextPoint.isLocked) return; // don't move if level is locked.
     currentPoint = nextPoint;
     LevelSelectUIController.instance.HideInfoPanel();
+    AudioManager.instance.PlaySFX("MAP_MOVEMENT");
   }
 
   private void HandleMovePlayer()
@@ -94,7 +95,7 @@ public class LevelSelectPlayer : MonoBehaviour
     if (Input.GetButtonDown("Jump"))
     {
       isLevelLoading = true;
-
+      AudioManager.instance.PlaySFX("LEVEL_SELECTED");
       theManager.LoadLevel();
     }
   }
