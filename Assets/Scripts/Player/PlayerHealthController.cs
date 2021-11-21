@@ -132,7 +132,7 @@ public class PlayerHealthController : MonoBehaviour
 
     CreateDeathEffectAnimation();
 
-    LevelManager.instance.StartPlayerRespawn(); // will make player dissapear and respawn
+    LevelManager.instance.RespawnPlayer(); // will make player dissapear and respawn
   }
 
   private void CreateDeathEffectAnimation()

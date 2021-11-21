@@ -18,7 +18,7 @@ public class DestroyPlayer : MonoBehaviour
   {
     if (other.tag == "Player")
     {
-      LevelManager.instance.StartPlayerRespawn();
+      LevelManager.instance.RespawnPlayer();
     }
   }
 }

@@ -13,7 +13,7 @@ public class LevelSelectUIController : MonoBehaviour
 
   public GameObject levelInfoPanel;
 
-  public Text levelName;
+  public Text levelName, gemsFound, gemsTarget, bestTime, timeTarget;
 
   void Awake()
   {
@@ -105,6 +105,14 @@ public class LevelSelectUIController : MonoBehaviour
   public void ShowInfoPanel(MapPoint levelInfo)
   {
     levelName.text = levelInfo.levelName;
+
+    gemsFound.text = "FOUND: " + levelInfo.gemsCollected;
+    gemsTarget.text = "IN LEVEL: " + levelInfo.totalGems;
+
+    timeTarget.text = "TARGET: " + levelInfo.targetTime + "s";
+
+    bestTime.text = "BEST: ";                                                       // F1: display as float number with 1 decimal place, F2: 2 decimal places
+    bestTime.text += levelInfo.bestTime == 0 ? "---" : levelInfo.bestTime.ToString("F2") + "s";
 
     levelInfoPanel.SetActive(true);
   }

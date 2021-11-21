@@ -7,10 +7,14 @@ public class MapPoint : MonoBehaviour
   public string levelToLoad, levelToCheck; // levelToCheck: previous lvl
   public string levelName;
 
+  public int gemsCollected, totalGems;
+  public float bestTime, targetTime;
+
   // Start is called before the first frame update
   void Start()
   {
     HandleLevelLocked();
+    HandleLevelStats();
   }
 
   // Update is called once per frame
@@ -45,6 +49,24 @@ public class MapPoint : MonoBehaviour
       {
         isLocked = false;
       }
+    }
+  }
+
+  private void HandleLevelStats()
+  {
+    if (!isLevel || isLevel && levelToLoad == null) return;
+
+    // set gems stats
+    if (PlayerPrefs.HasKey(levelToLoad + "_gems"))
+    {
+      gemsCollected = PlayerPrefs.GetInt(levelToLoad + "_gems");
+    }
+
+    // set time stats
+    if (PlayerPrefs.HasKey(levelToLoad + "_time"))
+    {
+
+      bestTime = PlayerPrefs.GetFloat(levelToLoad + "_time");
     }
   }
 }
