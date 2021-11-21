@@ -69,7 +69,15 @@ public class MainMenu : MonoBehaviour
     {
       // for gamepad
       EventSystem.current.SetSelectedGameObject(null); // clear selected object
-      EventSystem.current.SetSelectedGameObject(startButton); // highlight the resume button when opening (so controller can use this)
+
+      if (continueButton.activeInHierarchy)
+      {
+        EventSystem.current.SetSelectedGameObject(continueButton); // highlight the continue button  (so controller can use this)
+      }
+      else
+      {
+        EventSystem.current.SetSelectedGameObject(startButton); // highlight the start button
+      }
     }
     else
     {
@@ -90,7 +98,14 @@ public class MainMenu : MonoBehaviour
 
     if (!EventSystem.current.currentSelectedGameObject)
     {
-      EventSystem.current.SetSelectedGameObject(startButton); // highlight the resume button when opening (so controller can use this)
+      if (continueButton.activeInHierarchy)
+      {
+        EventSystem.current.SetSelectedGameObject(continueButton); // highlight the continue button
+      }
+      else
+      {
+        EventSystem.current.SetSelectedGameObject(startButton); // highlight the start button
+      }
     }
   }
 
