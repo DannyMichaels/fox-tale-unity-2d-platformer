@@ -10,11 +10,14 @@ public class MapPoint : MonoBehaviour
   public int gemsCollected, totalGems;
   public float bestTime, targetTime;
 
+  public GameObject gemBadge, timeBadge;
+
   // Start is called before the first frame update
   void Start()
   {
     HandleLevelLocked();
     HandleLevelStats();
+    HandleLevelBadges();
   }
 
   // Update is called once per frame
@@ -28,6 +31,7 @@ public class MapPoint : MonoBehaviour
   {
     if (isLevel && levelToLoad != null)
     {
+
       isLocked = true; // by default, all mapPoints will be locked.
 
       if (levelToCheck != null)
@@ -67,6 +71,21 @@ public class MapPoint : MonoBehaviour
     {
 
       bestTime = PlayerPrefs.GetFloat(levelToLoad + "_time");
+    }
+  }
+
+  private void HandleLevelBadges()
+  {
+    if (!isLevel || isLevel && levelToLoad == null) return;
+
+    if (gemsCollected >= totalGems)
+    {
+      gemBadge.SetActive(true);
+    }
+
+    if (bestTime <= targetTime && bestTime != 0)
+    {
+      timeBadge.SetActive(true);
     }
   }
 }
