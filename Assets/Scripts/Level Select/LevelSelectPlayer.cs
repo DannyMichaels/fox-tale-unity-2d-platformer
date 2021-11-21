@@ -12,10 +12,12 @@ public class LevelSelectPlayer : MonoBehaviour
 
   public LevelSelectManager theManager;
 
+  private bool isInputBlocked = false;
+
   // Start is called before the first frame update
   void Start()
   {
-
+    isInputBlocked = false;
   }
 
   // Update is called once per frame
@@ -94,8 +96,11 @@ public class LevelSelectPlayer : MonoBehaviour
 
     if (Input.GetButtonDown("Jump"))
     {
+      if (isInputBlocked) return;
+
+      isInputBlocked = true; // avoid button spam so lvl selected SFX doesn't get spammed
+
       isLevelLoading = true;
-      AudioManager.instance.PlaySFX("LEVEL_SELECTED");
       theManager.LoadLevel();
     }
   }

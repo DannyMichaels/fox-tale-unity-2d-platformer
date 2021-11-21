@@ -28,6 +28,8 @@ public class LevelSelectManager : MonoBehaviour
 
   public IEnumerator LoadLevelCoroutine()
   {
+    AudioManager.instance.PlaySFX("LEVEL_SELECTED");
+
     LevelSelectUIController.instance.FadeToBlack();
 
     yield return new WaitForSeconds((1f / LevelSelectUIController.instance.fadeSpeed) + .25f);

@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
 
     AudioManager.instance.PlayEndLevelMusic(); // play victory music
 
-    yield return new WaitForSeconds(4.5f); // wait for music to end
+    yield return new WaitForSeconds(4f); // wait for music to end
 
     UIController.instance.FadeToBlack(); // then fade to black
 
