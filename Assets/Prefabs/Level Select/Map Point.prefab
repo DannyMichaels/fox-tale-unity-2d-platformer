@@ -136,9 +136,9 @@ MonoBehaviour:
   levelToLoad: Level1-1
   levelToCheck: Level1-1
   levelName: '1: The Beginning'
-  gemsCollected: 5
-  totalGems: 21
-  bestTime: 43
+  gemsCollected: 0
+  totalGems: 5
+  bestTime: 0
   targetTime: 30
   gemBadge: {fileID: 3382873758619597022}
   timeBadge: {fileID: 3666648508716169982}
