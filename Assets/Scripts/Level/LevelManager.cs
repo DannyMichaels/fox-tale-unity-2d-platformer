@@ -107,7 +107,38 @@ public class LevelManager : MonoBehaviour
 
   private void UpdateLevelStats()
   {
-    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_gems", gemsCollected); // set gems collected for that level that was just completed so we can see in lvl select
-    PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name + "_time", timeInLevel); // set time in level for level select to see
+    string sceneName = SceneManager.GetActiveScene().name;
+    string gemsKey = sceneName + "_gems";
+    string timeKey = sceneName + "_time";
+
+    // if we already have the key, make sure that the current value is the BEST record, so it doesn't save a worse value, else if it doesn't have the key: save as is.
+    if (PlayerPrefs.HasKey(gemsKey))
+    {
+      // if the gemsCollected are greater than the saved gems amount, that means it's a new record, so save them.
+      if (gemsCollected > PlayerPrefs.GetInt(gemsKey))
+      {
+        PlayerPrefs.SetInt(gemsKey, gemsCollected); // set gems collected for that level that was just completed so we can see in lvl select
+      }
+    }
+    else
+    {
+      // if doesn't have gems key, just save. 
+      PlayerPrefs.SetInt(gemsKey, gemsCollected); // set gems collected for that level that was just completed so we can see in lvl select
+    }
+
+
+    if (PlayerPrefs.HasKey(timeKey))
+    {
+      // if time in level is less than existing saved score, that means it's a new record, so it should be saved.
+      if (timeInLevel < PlayerPrefs.GetFloat(timeKey))
+      {
+        PlayerPrefs.SetFloat(timeKey, timeInLevel); // set time in level for level select to see
+      }
+    }
+    else
+    {
+      // if doesn't have key that means it wasn't saved, so just save.
+      PlayerPrefs.SetFloat(timeKey, timeInLevel); // set time in level for level select to see
+    }
   }
 }
