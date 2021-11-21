@@ -62,10 +62,12 @@ public class PauseMenu : MonoBehaviour
     }
   }
 
+  // open level select scene
   public void LevelSelect()
   {
-    SceneManager.LoadScene(levelSelect);
-    ResumeGame();
+    PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name); // save the current level so when we go to level select the player will be spawned on that point
+    SceneManager.LoadScene(levelSelect); // load the level select scene
+    ResumeGame(); // unpause the game
   }
 
   public void MainMenu()

@@ -103,6 +103,8 @@ public class LevelManager : MonoBehaviour
   {
     // unlock the completed level which also unlocks next lvl due to levelToCheck var (ex: level1-1_unlocked), SetInt(key, value)  
     PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlocked", 1);
+
+    PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name); // save the current level so when we go to level select the player will be spawned on that point
   }
 
   private void UpdateLevelStats()
