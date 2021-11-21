@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
   public int gemsCollected;
 
-  public string levelToLoad;
+  public string levelToLoad; // the NEXT level to load once level ends
 
   public float timeInLevel;
 

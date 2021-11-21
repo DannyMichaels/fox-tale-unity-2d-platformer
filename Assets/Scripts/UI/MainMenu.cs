@@ -6,29 +6,29 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-  public string startScene;
+  public string startScene, continueScene;
   private bool isGamepadConnected;
 
   public GameObject[] clickableButtons;
-
 
   // for the gamepad buttons when clickable buttons are disabled
   public GameObject[] selectButtons;
   private bool isStartSelectHovered = true;
   private bool isExitSelectHovered = false;
+  private bool isContinueSelectHovered = false;
 
   // Start is called before the first frame update
   void Start()
   {
-    EventSystem.current.SetSelectedGameObject(clickableButtons[0]);
     DetectGamepad();
   }
 
   // Update is called once per frame
   void Update()
   {
+    // NOTE: this isn't an elegant way to handle menu controls with gamepad, check how it's done on PauseMenu.cs with SetSelectedGameObject
+    // all of this logic of having separate select and clickable buttons is not needed
     DetectGamepad();
-    HandleLoseFocus();
   }
 
   public void StartGame()
@@ -40,6 +40,11 @@ public class MainMenu : MonoBehaviour
   {
     Application.Quit();
     Debug.Log("Exiting Game");
+  }
+
+  public void ContinueGame()
+  {
+    SceneManager.LoadScene(continueScene);
   }
 
   private void DetectGamepad()
@@ -133,23 +138,33 @@ public class MainMenu : MonoBehaviour
 
   public void HandleGamepadButtons()
   {
-
     if (!isGamepadConnected) return;
 
     if (Input.GetAxisRaw("Vertical") > 0)
     {
-      isStartSelectHovered = true;
+      if (isStartSelectHovered)
+      {
+        isStartSelectHovered = false;
+        isContinueSelectHovered = true;
+      }
+      else
+      {
+        isStartSelectHovered = true;
+      }
+
       isExitSelectHovered = false;
     }
 
     if (Input.GetAxisRaw("Vertical") < 0)
     {
+      isContinueSelectHovered = false;
       isStartSelectHovered = false;
       isExitSelectHovered = true;
     }
 
     GameObject selectButtonStart = selectButtons[0];
     GameObject selectButtonExit = selectButtons[1];
+    GameObject selectButtonContinue = selectButtons[2];
 
 
     if (isStartSelectHovered)
@@ -178,19 +193,20 @@ public class MainMenu : MonoBehaviour
     {
       selectButtonExit.GetComponentInChildren<Text>().color = Color.white;
     }
-  }
 
 
-
-
-
-  // @method HandleLoseFocus
-  // @desc handle an edge case where user clicks away from buttons and buttons get unhighlighted which means controller can't work
-  private void HandleLoseFocus()
-  {
-    if (!EventSystem.current.currentSelectedGameObject)
+    if (isContinueSelectHovered)
     {
-      EventSystem.current.SetSelectedGameObject(clickableButtons[0]); // highlight the resume button when opening (so controller can use this)
+      selectButtonContinue.GetComponentInChildren<Text>().color = Color.yellow;
+
+      if (Input.GetButtonDown("Jump"))
+      {
+        ContinueGame();
+      }
+    }
+    else
+    {
+      selectButtonContinue.GetComponentInChildren<Text>().color = Color.white;
     }
   }
 }
