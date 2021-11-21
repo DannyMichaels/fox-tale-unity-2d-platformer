@@ -244,13 +244,15 @@ MonoBehaviour:
   moveSpeed: 8
   theRB: {fileID: 9069140761462235621}
   jumpForce: 12
+  isOnGround: 0
   groundCheckPoint: {fileID: 9069140760925308956}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   knockBackLength: 0.25
   knockBackForce: 5
   bounceForce: 15
+  stopInput: 0
 --- !u!95 &9069140761462235622
 Animator:
   serializedVersion: 3
