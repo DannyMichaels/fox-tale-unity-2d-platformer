@@ -55,7 +55,6 @@ public class Slammer : MonoBehaviour
 
     theSlammer.transform.position = Vector3.MoveTowards(theSlammer.transform.position, slammerTarget.transform.position, slamSpeed * Time.deltaTime);
 
-
     bool hitSlammerTarget = Vector3.Distance(theSlammer.transform.position, slammerTarget.transform.position) <= .1f; // if hit target (ex: slammer target is ground)
 
     if (hitSlammerTarget)
