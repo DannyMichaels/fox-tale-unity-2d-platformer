@@ -58,7 +58,7 @@ public class BouncePad : MonoBehaviour
     // if the player isn't on the ground, wait a bit.
     while (!PlayerController.instance.isOnGround)
     {
-      yield return new WaitForSeconds(.001f);
+      yield return new WaitForSeconds(.001f * (bounceForce / 100));
     }
 
     if (PlayerController.instance.isOnGround)
