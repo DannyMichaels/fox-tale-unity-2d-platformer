@@ -42,9 +42,10 @@ public class BouncePad : MonoBehaviour
   }
 
   /* @method PlayerBounceCo
-    @desc a courotine: Make the player bounce first.
-    then set a bool for is BouncedByPad to block him from jumping again (Think how sonic bounce pad works)
-     doing this so player can't jump while being bounced */
+     @desc a courotine: Make the player bounce first.
+     then set a bool for is BouncedByPad to block him from jumping again (Think how sonic bounce pad works)
+     doing this so player can't jump while being bounced 
+  */
   private IEnumerator PlayerBounceCo()
   {
     PlayerController.instance.theRB.velocity = new Vector2(PlayerController.instance.theRB.velocity.x, bounceForce); // maintain X, new Y. the actual code that makes the player bounce
