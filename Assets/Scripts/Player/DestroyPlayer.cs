@@ -16,9 +16,15 @@ public class DestroyPlayer : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.tag == "Player")
+    // if (other.tag == "Player")
+    // {
+    //   LevelManager.instance.RespawnPlayer();
+    // }
+
+    if (other.CompareTag("Player"))
     {
-      LevelManager.instance.RespawnPlayer();
+      // doing it this way because the KillPlayer method also resets hearts ui and plays an animation and then runs the LevelManager RespawnPlayer
+      PlayerHealthController.instance.KillPlayer();
     }
   }
 }

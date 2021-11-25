@@ -49,7 +49,7 @@ public class PlayerHealthController : MonoBehaviour
 
     CheckPlayerDead(); // check if he's dead and if he is respawn him else make him invincible for a bit. 
 
-    updateUIHeartsDisplay();
+    UpdateUIHeartsDisplay();
   }
 
   // HealPlayer: used when cherry is being pickedup
@@ -63,14 +63,14 @@ public class PlayerHealthController : MonoBehaviour
       currentHealth = maxHealth;
     }
 
-    updateUIHeartsDisplay();
+    UpdateUIHeartsDisplay();
   }
 
   public void CheckPlayerDead()
   {
     if (currentHealth <= 0)
     {
-      HandlePlayerDeath();
+      KillPlayer();
     }
     else
     {
@@ -120,19 +120,21 @@ public class PlayerHealthController : MonoBehaviour
     theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, opacity); // keep rgb as is, change a (transparency)
   }
 
-  public void updateUIHeartsDisplay()
+  public void UpdateUIHeartsDisplay()
   {
     UIController.instance.UpdateHealthDisplay();
   }
 
-  private void HandlePlayerDeath()
+  public void KillPlayer()
   {
     // gameObject.SetActive(false); // make player dissapear
     currentHealth = 0;
 
+    UpdateUIHeartsDisplay(); // update ui hearts just in case it's an insta kill.
+
     CreateDeathEffectAnimation();
 
-    LevelManager.instance.RespawnPlayer(); // will make player dissapear and respawn
+    LevelManager.instance.RespawnPlayer(); // will make player dissapear and respawn (start coRoutine)
   }
 
   private void CreateDeathEffectAnimation()
