@@ -56,7 +56,7 @@ public class FlyingEnemyController : MonoBehaviour
     attackTarget = Vector3.zero; // reset attackTarget to 0,0,0 (x,y,z) when player isn't in range.
     MoveTorwardsCurrentPoint();
     HandleChangePoint();
-    HandleSpriteFacingDirection();
+    HandleSpriteFacingDirection(points[currentPoint].position.x);
   }
 
   // @method MoveTorwardsCurrentPoint
@@ -101,10 +101,10 @@ public class FlyingEnemyController : MonoBehaviour
 
   // @method HandleSpriteFacingDirection
   // @desc make enemy face left or right
-  private void HandleSpriteFacingDirection()
+  private void HandleSpriteFacingDirection(float targetXPosition)
   {
-    bool shouldFaceRight = transform.position.x < points[currentPoint].position.x;
-    bool shouldFaceLeft = transform.position.x > points[currentPoint].position.x;
+    bool shouldFaceRight = transform.position.x < targetXPosition;
+    bool shouldFaceLeft = transform.position.x > targetXPosition;
 
     if (shouldFaceRight)
     {
@@ -126,6 +126,9 @@ public class FlyingEnemyController : MonoBehaviour
     }
 
     transform.position = Vector3.MoveTowards(transform.position, attackTarget, chaseSpeed * Time.deltaTime);
+
+
+    HandleSpriteFacingDirection(attackTarget.x);
   }
 
   // note this method deals no damage to the player, it just makes sure the enemy chases him and then sets the counter accordingly
