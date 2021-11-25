@@ -53,12 +53,12 @@ public class BouncePad : MonoBehaviour
     PlayerController.instance.isBouncedByPad = true; // setting a bool so Player is blocked from jumping again.
 
     // first initial wait
-    yield return new WaitForSeconds(1f * (bounceForce / 100));
+    yield return new WaitForSeconds(.5f * (bounceForce / 100));
 
     // if the player isn't on the ground, wait a bit.
     while (!PlayerController.instance.isOnGround)
     {
-      yield return new WaitForSeconds(1f * (bounceForce / 100));
+      yield return new WaitForSeconds(.5f * (bounceForce / 100));
     }
 
     if (PlayerController.instance.isOnGround)
