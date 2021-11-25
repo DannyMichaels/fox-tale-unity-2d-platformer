@@ -7,6 +7,10 @@ public class FlyingEnemyController : MonoBehaviour
   private int currentPoint;
 
   public SpriteRenderer theSR;
+
+  // distanceToAttackPlayer: the range for enemy to attack player, chaseSpeed: speed to be chasing player
+  public float distanceToAttackPlayer, chaseSpeed;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -15,6 +19,25 @@ public class FlyingEnemyController : MonoBehaviour
 
   // Update is called once per frame
   void Update()
+  {
+    /*
+      if the distance between the current position and the player controller position is greater than the distance to attack the player 
+      it means the player is NOT within range.
+     */
+    bool playerIsNotInRange = Vector3.Distance(transform.position, PlayerController.instance.transform.position) > distanceToAttackPlayer;
+
+    if (playerIsNotInRange)
+    {
+      MoveNormally();
+    }
+    else
+    {
+      // player is in range, chase him.
+      ChasePlayer();
+    }
+  }
+
+  private void MoveNormally()
   {
     MoveTorwardsCurrentPoint();
     HandleChangePoint();
@@ -76,5 +99,10 @@ public class FlyingEnemyController : MonoBehaviour
     {
       theSR.flipX = false;
     }
+  }
+
+  private void ChasePlayer()
+  {
+    transform.position = Vector3.MoveTowards(transform.position, PlayerController.instance.transform.position, chaseSpeed * Time.deltaTime);
   }
 }
