@@ -712,6 +712,7 @@ MonoBehaviour:
   - {fileID: 169887353}
   - {fileID: 78765445}
   moveSpeed: 5
+  theSR: {fileID: 1978040045}
 --- !u!1 &773716415
 GameObject:
   m_ObjectHideFlags: 0
