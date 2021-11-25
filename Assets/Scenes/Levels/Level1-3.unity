@@ -8329,7 +8329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7423450233990144930, guid: 838a9b820434b6d4aaa74fde58b58734, type: 3}
       propertyPath: bounceForce
-      value: 10
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7423450233990144932, guid: 838a9b820434b6d4aaa74fde58b58734, type: 3}
       propertyPath: m_RootOrder
