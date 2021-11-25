@@ -185,6 +185,29 @@ public class PlayerController : MonoBehaviour
     // PlayJumpSFX();
   }
 
+
+  // when 2 colldiers touch against each other
+  private void OnCollisionEnter2D(Collision2D other)
+  {
+
+    // for moving platforms when player is ontop.
+    if (other.gameObject.CompareTag("Platform"))
+    {
+      // player parent will be the platform so he will follow the moving platform
+      transform.parent = other.transform;
+    }
+  }
+
+
+  // when two colliders stop touching each other
+  private void OnCollisionExit2D(Collision2D other)
+  {
+    if (other.gameObject.CompareTag("Platform"))
+    {
+      transform.parent = null; // unparent the platform from the player
+    }
+  }
+
   private void HandleErrors()
   {
     if (!PauseMenu.instance)
