@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
   public bool isOnGround; // keep track of wether player is on ground or not (only public so I can use it in StompBox.cs).
   public Transform groundCheckPoint;
   public LayerMask whatIsGround;
+
   private bool canDoubleJump;
+
+  public bool isBouncedByPad; // check if player is bounced by pad to block jumping
 
   private Animator animator;
   private SpriteRenderer theSR; // the sprite renderer
@@ -71,6 +74,8 @@ public class PlayerController : MonoBehaviour
   {
     CheckIsOnGround();
     CheckCanDoubleJump();
+
+    if (isBouncedByPad) return;
 
     // edit -> project settings -> input manager, name of input, NOT set key of input
     if (Input.GetButtonDown("Jump")) // GetButtonDown: the very moment a button is pressed (not held down, for held down use GetButton) 
