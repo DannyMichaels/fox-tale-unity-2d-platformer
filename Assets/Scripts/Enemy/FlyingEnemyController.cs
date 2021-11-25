@@ -25,9 +25,9 @@ public class FlyingEnemyController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    bool isChasingPlayer = attackCounter > 0;
+    bool isWaiting = attackCounter > 0;
 
-    if (isChasingPlayer)
+    if (isWaiting) // is waiting before attacking again
     {
       attackCounter -= Time.deltaTime;
     }
