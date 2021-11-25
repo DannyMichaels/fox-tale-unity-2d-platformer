@@ -11,6 +11,11 @@ public class FlyingEnemyController : MonoBehaviour
   // distanceToAttackPlayer: the range for enemy to attack player, chaseSpeed: speed to be chasing player
   public float distanceToAttackPlayer, chaseSpeed;
 
+  private Vector3 attackTarget;
+
+  public float waitAfterAttack; // time to wait/pause after a chase/attack sequence has ended, if player is still close it will chase him again, else it will go back to moving normally
+  private float attackCounter;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -20,25 +25,35 @@ public class FlyingEnemyController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    /*
-      if the distance between the current position and the player controller position is greater than the distance to attack the player 
-      it means the player is NOT within range.
-     */
-    bool playerIsNotInRange = Vector3.Distance(transform.position, PlayerController.instance.transform.position) > distanceToAttackPlayer;
+    bool isChasingPlayer = attackCounter > 0;
 
-    if (playerIsNotInRange)
+    if (isChasingPlayer)
     {
-      MoveNormally();
+      attackCounter -= Time.deltaTime;
     }
     else
     {
-      // player is in range, chase him.
-      ChasePlayer();
+      /*
+        if the distance between the current position and the player controller position is greater than the distance to attack the player 
+        it means the player is NOT within range.
+       */
+      bool playerIsNotInRange = Vector3.Distance(transform.position, PlayerController.instance.transform.position) > distanceToAttackPlayer;
+
+      if (playerIsNotInRange)
+      {
+        MoveNormally();
+      }
+      else
+      {
+        // player is in range, chase & attack him.
+        AttackPlayer();
+      }
     }
   }
 
   private void MoveNormally()
   {
+    attackTarget = Vector3.zero; // reset attackTarget to 0,0,0 (x,y,z) when player isn't in range.
     MoveTorwardsCurrentPoint();
     HandleChangePoint();
     HandleSpriteFacingDirection();
@@ -103,6 +118,27 @@ public class FlyingEnemyController : MonoBehaviour
 
   private void ChasePlayer()
   {
-    transform.position = Vector3.MoveTowards(transform.position, PlayerController.instance.transform.position, chaseSpeed * Time.deltaTime);
+    // Vector3.zero = x0, y0, z0;
+
+    if (attackTarget == Vector3.zero)
+    {
+      attackTarget = PlayerController.instance.transform.position; // set attackTarget to player pos
+    }
+
+    transform.position = Vector3.MoveTowards(transform.position, attackTarget, chaseSpeed * Time.deltaTime);
+  }
+
+  // note this method deals no damage to the player, it just makes sure the enemy chases him and then sets the counter accordingly
+  private void AttackPlayer()
+  {
+
+    ChasePlayer();
+
+    if (Vector3.Distance(transform.position, attackTarget) <= .1f)
+    {
+      // if the distance is super close, that means the player has been attacked
+      attackCounter = waitAfterAttack; // wait that length of time and then allow to move torwards player
+      attackTarget = Vector3.zero;
+    }
   }
 }
