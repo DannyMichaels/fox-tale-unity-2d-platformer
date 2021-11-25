@@ -127,8 +127,7 @@ public class FlyingEnemyController : MonoBehaviour
 
     transform.position = Vector3.MoveTowards(transform.position, attackTarget, chaseSpeed * Time.deltaTime);
 
-
-    HandleSpriteFacingDirection(attackTarget.x);
+    HandleSpriteFacingDirection(attackTarget.x); // make sure enemy is facing player while doing this
   }
 
   // note this method deals no damage to the player, it just makes sure the enemy chases him and then sets the counter accordingly
