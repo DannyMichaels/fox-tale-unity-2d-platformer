@@ -28,7 +28,6 @@ public class Switch : MonoBehaviour
     theSR = GetComponent<SpriteRenderer>();
   }
 
-
   private void OnTriggerEnter2D(Collider2D other)
   {
     // if player is collided with switch
