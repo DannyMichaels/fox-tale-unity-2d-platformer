@@ -14,7 +14,7 @@ public class Slammer : MonoBehaviour
 
   private Vector3 attackTarget;
 
-  private bool continueAttack = false;
+  private bool continueAttack = false; // continue slamming down torwards player
 
   public float attackRangeX = 1.5f; // x axis for slammer target to compare.
 
