@@ -46,14 +46,7 @@ public class BossTankController : MonoBehaviour
   void Update()
   {
     UseBossStates();
-
-    // #if/#endif only run this if in development mode
-#if UNITY_EDITOR
-    if (Input.GetKeyDown(KeyCode.H))
-    {
-      TakeHit();
-    }
-#endif
+    useDebug();
   }
 
 
@@ -70,7 +63,7 @@ public class BossTankController : MonoBehaviour
         break;
 
       case bossStates.moving:
-        HandleBossMoving();
+        HandleBossMove();
         break;
     }
   }
@@ -94,7 +87,7 @@ public class BossTankController : MonoBehaviour
     }
   }
 
-  private void HandleBossMoving()
+  private void HandleBossMove()
   {
     if (shouldMoveRight)
     {
@@ -110,8 +103,7 @@ public class BossTankController : MonoBehaviour
         // stop moving to the right (will move to left on next invocation of this function).
         shouldMoveRight = false;
 
-        currentState = bossStates.shooting; // start shooting
-        shotCounter = timeBetweenShots; // start shotCounter
+        EndBossMovement();
       }
     }
     else
@@ -130,8 +122,7 @@ public class BossTankController : MonoBehaviour
         // stop moving to the left (will move to right on next invocation of this function).
         shouldMoveRight = true;
 
-        currentState = bossStates.shooting; // start shooting
-        shotCounter = timeBetweenShots; // start shotCounter
+        EndBossMovement();
       }
     }
   }
@@ -139,7 +130,7 @@ public class BossTankController : MonoBehaviour
   private void ChangeFacingDirection(string directionToFace)
   {
     // change scale
-    // using scale soeverything maintains it's position but flipped (including the firepoint, flipX won't maintain that)  
+    // using localScale so everything maintains it's position but flipped (including the firepoint, flipX won't flip firePoint)  
     if (directionToFace == "left")
     {
       theBoss.localScale = Vector3.one; // Vector3.one is equivalent to: new Vector3(1f, 1f, 1f)
@@ -150,9 +141,30 @@ public class BossTankController : MonoBehaviour
     }
   }
 
+  private void EndBossMovement()
+  {
+    currentState = bossStates.shooting; // start shooting
+    shotCounter = timeBetweenShots; // start shotCounter
+
+    animator.SetTrigger("StopMoving"); // stop moving on animator which will cause the Boss_Tank_Open animation into idle to run
+  }
+
   private void TakeHit()
   {
     currentState = bossStates.hurt;
     hurtCounter = hurtTime;
+
+    animator.SetTrigger("Hit"); // play hit animation which then goes to close animation
+  }
+
+  private void useDebug()
+  {
+    // #if/#endif only run this if in development mode
+#if UNITY_EDITOR
+    if (Input.GetKeyDown(KeyCode.H))
+    {
+      TakeHit();
+    }
+#endif
   }
 }
