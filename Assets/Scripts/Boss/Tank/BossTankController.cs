@@ -70,7 +70,15 @@ public class BossTankController : MonoBehaviour
 
   private void HandleBossShooting()
   {
+    shotCounter -= Time.deltaTime;
 
+    if (shotCounter <= 0)
+    {
+      shotCounter = timeBetweenShots; // reset the counter 
+      var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation); // create the bullet at the correct position and refer to it as newBullet.
+
+      newBullet.transform.localScale = theBoss.localScale;  // make sure that the bullet has the same localScale as the boss
+    }
   }
 
   private void HandleBossHurt()
