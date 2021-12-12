@@ -36,6 +36,8 @@ public class BossTankController : MonoBehaviour
   public float hurtTime; // time to wait after gets hurt before continuing
   private float hurtCounter; // counter to start after gets hurt
 
+  public GameObject theHitBox;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -155,9 +157,11 @@ public class BossTankController : MonoBehaviour
     shotCounter = timeBetweenShots; // start shotCounter
 
     animator.SetTrigger("StopMoving"); // stop moving on animator which will cause the Boss_Tank_Open animation into idle to run
+
+    theHitBox.SetActive(true); // reactivate hitbox when reaching the other side (because it was deactivated in BossTankHitBox script after getting hit.)
   }
 
-  private void TakeHit()
+  public void TakeHit()
   {
     currentState = bossStates.hurt;
     hurtCounter = hurtTime;
