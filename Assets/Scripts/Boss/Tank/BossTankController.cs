@@ -51,7 +51,6 @@ public class BossTankController : MonoBehaviour
     useDebug();
   }
 
-
   private void UseBossStates()
   {
     switch (currentState)
@@ -154,7 +153,8 @@ public class BossTankController : MonoBehaviour
   private void EndBossMovement()
   {
     currentState = bossStates.shooting; // start shooting
-    shotCounter = timeBetweenShots; // start shotCounter
+    // shotCounter = timeBetweenShots; // start shotCounter
+    shotCounter = 0f;
 
     animator.SetTrigger("StopMoving"); // stop moving on animator which will cause the Boss_Tank_Open animation into idle to run
 
