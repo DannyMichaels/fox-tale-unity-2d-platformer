@@ -24,7 +24,10 @@ public class BossTankController : MonoBehaviour
   public float moveSpeed;
   public Transform leftPoint, rightPoint;
   private bool shouldMoveRight;
-
+  public GameObject mine;
+  public Transform minePoint;
+  public float timeBetweenMines;
+  private float mineCounter;
 
   [Header("Shooting")]
   public GameObject bullet;
@@ -92,6 +95,8 @@ public class BossTankController : MonoBehaviour
       {
         // start moving if hurtCounter is less than or equal to 0.
         currentState = bossStates.moving;
+
+        mineCounter = 0;
       }
     }
   }
@@ -133,6 +138,14 @@ public class BossTankController : MonoBehaviour
 
         EndBossMovement();
       }
+    }
+
+    mineCounter -= Time.deltaTime; // decrease mine counter every frame
+
+    if (mineCounter <= 0)
+    {
+      mineCounter = timeBetweenMines; // reset mine counter
+      Instantiate(mine, minePoint.position, minePoint.rotation); // create a mine
     }
   }
 
