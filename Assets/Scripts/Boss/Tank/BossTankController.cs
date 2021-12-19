@@ -179,7 +179,7 @@ public class BossTankController : MonoBehaviour
 
     animator.SetTrigger("Hit"); // play hit animation which then goes to close animation
 
-
+    ClearMines();
   }
 
   private void ClearMines()
