@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
 BOSS FLOW:
 
 1. is shooting. 
-2. is hurt (goes on ground, waits a bit) THEN STARTS MOVING. 
-3. back to shooting
-
+2. is hurt (goes on ground, waits a bit) THEN STARTS MOVING.
+3. is moving and drops mines.
+3. stops moving: back to shooting
 */
 
 public class BossTankController : MonoBehaviour
@@ -180,6 +178,23 @@ public class BossTankController : MonoBehaviour
     hurtCounter = hurtTime;
 
     animator.SetTrigger("Hit"); // play hit animation which then goes to close animation
+
+
+  }
+
+  private void ClearMines()
+  {
+    BossTankMine[] mines = FindObjectsOfType<BossTankMine>();
+
+    if (mines.Length > 0)
+    {
+
+      foreach (BossTankMine foundMine in mines)
+      {
+        // Destroy(foundMine);
+        foundMine.Explode(); // make it explode
+      }
+    }
   }
 
   private void useDebug()

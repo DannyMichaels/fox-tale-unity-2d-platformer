@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossTankMine : MonoBehaviour
@@ -28,5 +26,12 @@ public class BossTankMine : MonoBehaviour
 
       PlayerHealthController.instance.DealDamage(); // damage the player
     }
+  }
+
+  public void Explode()
+  {
+    Destroy(gameObject);
+
+    Instantiate(explosion, transform.position, transform.rotation); // instantiate an explosion
   }
 }
