@@ -11156,7 +11156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446980319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4899998, y: -1.1187654, z: -1}
+  m_LocalPosition: {x: 1.14, y: -1.1187654, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 795325509}
@@ -11554,3 +11554,7 @@ MonoBehaviour:
   timeBetweenShots: 1.5
   hurtTime: 1
   theHitBox: {fileID: 440244001}
+  health: 5
+  explosion: {fileID: 523926923048012287, guid: 822cdcdde4422634c83edd8751cc31c4, type: 3}
+  shotSpeedUp: 1.2
+  mineSpeedUp: 1.2

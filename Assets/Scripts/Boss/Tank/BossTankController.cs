@@ -11,7 +11,7 @@ BOSS FLOW:
 
 public class BossTankController : MonoBehaviour
 {
-  public enum bossStates { shooting, hurt, moving };
+  public enum bossStates { shooting, hurt, moving, ended };
   public bossStates currentState;
 
   public Transform theBoss;
@@ -36,8 +36,13 @@ public class BossTankController : MonoBehaviour
   [Header("Hurt")]
   public float hurtTime; // time to wait after gets hurt before continuing
   private float hurtCounter; // counter to start after gets hurt
-
   public GameObject theHitBox;
+
+  [Header("Health")]
+  public int health = 5;
+  public GameObject explosion;
+  private bool isDefeated;
+  public float shotSpeedUp, mineSpeedUp; // increase speed (difficulty increase when he's closer to death)
 
   // Start is called before the first frame update
   void Start()
@@ -95,6 +100,14 @@ public class BossTankController : MonoBehaviour
         currentState = bossStates.moving;
 
         mineCounter = 0;
+
+        if (isDefeated)
+        {
+          theBoss.gameObject.SetActive(false);
+          Instantiate(explosion, theBoss.position, theBoss.rotation);
+
+          currentState = bossStates.ended;
+        }
       }
     }
   }
@@ -180,6 +193,23 @@ public class BossTankController : MonoBehaviour
     animator.SetTrigger("Hit"); // play hit animation which then goes to close animation
 
     ClearMines();
+
+    health -= 1;
+
+    if (health <= 0)
+    {
+      isDefeated = true;
+    }
+    else
+    {
+      IncreaseDifficulty(); // make boss shoot and throw mines faster after each hit
+    }
+  }
+
+  private void IncreaseDifficulty()
+  {
+    timeBetweenShots /= shotSpeedUp;
+    timeBetweenMines /= mineSpeedUp;
   }
 
   private void ClearMines()
