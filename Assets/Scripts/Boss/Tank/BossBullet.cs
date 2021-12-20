@@ -9,7 +9,7 @@ public class BossBullet : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-
+    AudioManager.instance.PlaySFX("BOSS_SHOT");
   }
 
   // Update is called once per frame
@@ -33,6 +33,8 @@ public class BossBullet : MonoBehaviour
     {
       PlayerHealthController.instance.DealDamage();
     }
+
+    AudioManager.instance.PlaySFX("BOSS_IMPACT");
 
     Destroy(gameObject); // destroy the bullet after hitting
   }

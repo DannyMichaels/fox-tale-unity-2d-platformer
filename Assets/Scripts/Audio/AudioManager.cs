@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 
   public AudioSource[] soundEffects;
 
-  public AudioSource backgroundMusic, levelEndMusic;
+  public AudioSource backgroundMusic, levelEndMusic, bossMusic;
 
   // Dictionary: like a hashmap 
   private static Dictionary<string, int> SOUNDS = new Dictionary<string, int>
@@ -88,5 +88,17 @@ public class AudioManager : MonoBehaviour
   {
     backgroundMusic.Stop();
     levelEndMusic.Play();
+  }
+
+  public void PlayBossMusic()
+  {
+    backgroundMusic.Stop();
+    bossMusic.Play();
+  }
+
+  public void StopBossMusic()
+  {
+    bossMusic.Stop();
+    backgroundMusic.Play();
   }
 }
