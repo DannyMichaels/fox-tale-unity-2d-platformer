@@ -44,6 +44,9 @@ public class BossTankController : MonoBehaviour
   private bool isDefeated;
   public float shotSpeedUp, mineSpeedUp; // increase speed (difficulty increase when he's closer to death)
 
+  public GameObject winPlatform; // platform that shows up when boss is defeated.
+
+
   // Start is called before the first frame update
   void Start()
   {
@@ -105,6 +108,8 @@ public class BossTankController : MonoBehaviour
         {
           theBoss.gameObject.SetActive(false);
           Instantiate(explosion, theBoss.position, theBoss.rotation);
+
+          winPlatform.SetActive(true);
 
           currentState = bossStates.ended;
         }
@@ -202,12 +207,13 @@ public class BossTankController : MonoBehaviour
     }
     else
     {
-      IncreaseDifficulty(); // make boss shoot and throw mines faster after each hit
+      IncreaseDifficulty(); // make boss wait less before shoot and throw mines after each hit
     }
   }
 
   private void IncreaseDifficulty()
   {
+    // make boss wait less before shoot and throw mines
     timeBetweenShots /= shotSpeedUp;
     timeBetweenMines /= mineSpeedUp;
   }
