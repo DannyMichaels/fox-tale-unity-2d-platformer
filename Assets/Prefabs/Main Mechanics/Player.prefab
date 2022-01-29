@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 9069140761462235623}
   - component: {fileID: 9069140761462235622}
   - component: {fileID: 1874393478}
+  - component: {fileID: 3209807173902996998}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -290,3 +291,16 @@ MonoBehaviour:
   invincibleLength: 1
   invincibleCounter: 0
   deathEffect: {fileID: 523926923048012287, guid: 822cdcdde4422634c83edd8751cc31c4, type: 3}
+--- !u!114 &3209807173902996998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9069140761462235616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2304040adba7ecc4c85f47f4b633b969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theRB: {fileID: 9069140761462235621}

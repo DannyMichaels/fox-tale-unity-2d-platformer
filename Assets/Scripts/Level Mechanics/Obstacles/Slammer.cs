@@ -8,7 +8,7 @@ public class Slammer : MonoBehaviour
 
   public float slamSpeed, waitAfterSlam, recoverySpeed;
 
-  private float attackCounter;
+  private float waitCounter;
 
   private Vector3 initialPosition;
 
@@ -36,11 +36,10 @@ public class Slammer : MonoBehaviour
       AttackPlayer();
     }
 
-    if (attackCounter > 0)
+    if (waitCounter > 0)
     {
-      attackCounter -= Time.deltaTime;
+      waitCounter -= Time.deltaTime;
     }
-
 
     // if it's not in initial position and continue attack is false, it should go back up
     if (!isAtSpawnPos && !continueAttack)
@@ -51,7 +50,7 @@ public class Slammer : MonoBehaviour
 
   private void AttackPlayer()
   {
-    if (attackCounter > 0) return;
+    if (waitCounter > 0) return;
 
     theSlammer.transform.position = Vector3.MoveTowards(theSlammer.transform.position, slammerTarget.transform.position, slamSpeed * Time.deltaTime);
 
@@ -59,7 +58,7 @@ public class Slammer : MonoBehaviour
 
     if (hitSlammerTarget)
     {
-      attackCounter = waitAfterSlam;
+      waitCounter = waitAfterSlam;
       continueAttack = false; // then it will go back up
     }
     else
@@ -70,7 +69,7 @@ public class Slammer : MonoBehaviour
 
   private void MoveBackToInitialPos()
   {
-    if (attackCounter > 0) return;
+    if (waitCounter > 0) return;
 
     theSlammer.transform.position = Vector3.MoveTowards(theSlammer.transform.position, initialPosition, recoverySpeed * Time.deltaTime);
   }

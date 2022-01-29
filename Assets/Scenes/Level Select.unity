@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: levelName
-      value: A clone of level 2, lol.
+      value: 3:Unfun times
       objectReference: {fileID: 0}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: levelToLoad
@@ -481,6 +481,10 @@ PrefabInstance:
       objectReference: {fileID: 20836087}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: isLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -990,6 +994,22 @@ PrefabInstance:
       propertyPath: isLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelName
+      value: '4: Big Chungus'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToLoad
+      value: Level1-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToCheck
+      value: Level1-3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
 --- !u!4 &708438746 stripped
@@ -1193,6 +1213,10 @@ PrefabInstance:
       objectReference: {fileID: 1876926718}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: isLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2165,6 +2189,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: levelName
       value: '2: Fun Times'
       objectReference: {fileID: 0}
@@ -2695,6 +2723,18 @@ PrefabInstance:
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: isLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelName
+      value: '7: The Boss'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToLoad
+      value: Boss-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: levelToCheck
+      value: Level1-3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
@@ -17233,6 +17273,10 @@ PrefabInstance:
       propertyPath: up
       value: 
       objectReference: {fileID: 1450034295}
+    - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8704985760394445145, guid: 927cbabd66c288e4085d1c462510fc26, type: 3}
       propertyPath: totalGems
       value: 21
