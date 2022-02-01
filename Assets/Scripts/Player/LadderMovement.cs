@@ -29,7 +29,7 @@ public class LadderMovement : MonoBehaviour
 
     if (isOnLadder && Mathf.Abs(vertical) > 0f)
     {
-      isClimbing = true;
+      isClimbing = true; // set isClimbing to true when pressing up when ladder is infront of player.
     }
 
 
