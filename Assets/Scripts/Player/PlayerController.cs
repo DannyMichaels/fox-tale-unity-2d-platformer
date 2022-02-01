@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
   public bool stopInput;
 
+  public bool isCrouching;
+
+
   private void Awake()
   {
     instance = this;
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
         HandleMoveHorizontal();
         HandleJump();
         HandleSpriteFacingDirection();
-        // HandleClimb();
+        HandleCrouch();
       }
     }
 
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour
   {
     animator.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x)); // always get positive value (for when moving left will return negative value)
     animator.SetBool("isOnGround", isOnGround);
+    animator.SetBool("isCrouching", isCrouching);
   }
 
   private void HandleSpriteFacingDirection()
@@ -224,4 +228,20 @@ public class PlayerController : MonoBehaviour
   }
 
 
+  private void HandleCrouch()
+  {
+    if (Input.GetButtonDown("Horizontal"))
+    {
+      isCrouching = false;
+    }
+
+    else if (Input.GetButtonDown("Crouch"))
+    {
+      isCrouching = true;
+    }
+    else if (Input.GetButtonUp("Crouch"))
+    {
+      isCrouching = false;
+    }
+  }
 }
