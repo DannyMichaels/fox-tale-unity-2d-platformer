@@ -29,7 +29,7 @@ public class LadderMovement : MonoBehaviour
 
     if (isOnLadder && Mathf.Abs(vertical) > 0f)
     {
-      isClimbing = true;
+      isClimbing = true; // set isClimbing to true when pressing up when ladder is infront of player.
     }
 
 
@@ -41,11 +41,11 @@ public class LadderMovement : MonoBehaviour
 
     if (Mathf.Abs(vertical) == 0 && isClimbing)
     {
-      animator.speed = 0f;
+      animator.speed = 0f; // freeze animator because player is on ladder but not moving
     }
     else
     {
-      animator.speed = initialAnimSpeed;
+      animator.speed = initialAnimSpeed; // reset animation because is climbing
     }
 
 
@@ -56,13 +56,13 @@ public class LadderMovement : MonoBehaviour
   {
     if (isClimbing)
     {
-      theRB.gravityScale = 0f;
-      animator.speed = initialAnimSpeed;
-      theRB.velocity = new Vector2(theRB.velocity.x, vertical * climbSpeed);
+      theRB.gravityScale = 0f; // stop gravity scale so when player doesn't hold movement keys the player doesn't fall down
+      animator.speed = initialAnimSpeed; // continue the animation
+      theRB.velocity = new Vector2(theRB.velocity.x, vertical * climbSpeed); // move on Y axis
     }
     else
     {
-      theRB.gravityScale = initialGravityScale;
+      theRB.gravityScale = initialGravityScale; // reset gravity scale if not climbing.
     }
   }
 
