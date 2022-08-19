@@ -64,7 +64,8 @@ public class LevelManager : MonoBehaviour
     PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;    // respawn player in the checkpoint spawnPoint Vector3
     PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth; // reset health
 
-    UIController.instance.UpdateHealthDisplay(); // reset the hearts UI
+    // UIController.instance.UpdateHealthDisplay(); // reset the hearts UI
+    HealthContainer.instance.GenerateHealthUI();
   }
 
 

@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: maxHeight
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 301210162634164436, guid: cb751640baa84c04a9bd45cdb3ee2121, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -900
+      objectReference: {fileID: 0}
     - target: {fileID: 4317072985669119015, guid: cb751640baa84c04a9bd45cdb3ee2121, type: 3}
       propertyPath: climbSpeed
       value: 4
@@ -506,6 +510,10 @@ PrefabInstance:
     - target: {fileID: 5059051432148881626, guid: cb751640baa84c04a9bd45cdb3ee2121, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059051433253286982, guid: cb751640baa84c04a9bd45cdb3ee2121, type: 3}
+      propertyPath: maxHealth
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7691825900764781510, guid: cb751640baa84c04a9bd45cdb3ee2121, type: 3}
       propertyPath: climbSpeed

@@ -255,6 +255,7 @@ MonoBehaviour:
   knockBackForce: 5
   bounceForce: 15
   stopInput: 0
+  isCrouching: 0
 --- !u!95 &9069140761462235622
 Animator:
   serializedVersion: 3
@@ -303,4 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2304040adba7ecc4c85f47f4b633b969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  climbSpeed: 5
+  isOnLadder: 0
+  isClimbing: 0
   theRB: {fileID: 9069140761462235621}

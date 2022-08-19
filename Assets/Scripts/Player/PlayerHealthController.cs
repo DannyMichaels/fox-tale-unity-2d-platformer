@@ -20,6 +20,8 @@ public class PlayerHealthController : MonoBehaviour
   private void Awake()
   {
     instance = this; // this would be the PlayerHealthController
+
+    currentHealth = maxHealth;
   }
 
 
@@ -27,8 +29,6 @@ public class PlayerHealthController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    currentHealth = maxHealth;
-
     theSR = GetComponent<SpriteRenderer>();
   }
 
@@ -122,7 +122,8 @@ public class PlayerHealthController : MonoBehaviour
 
   public void UpdateUIHeartsDisplay()
   {
-    UIController.instance.UpdateHealthDisplay();
+    // UIController.instance.UpdateHealthDisplay();
+    HealthContainer.instance.UpdateHealthUI();
   }
 
   public void KillPlayer()
