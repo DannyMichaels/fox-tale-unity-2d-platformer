@@ -8,7 +8,6 @@ public class HealthContainer : MonoBehaviour
   //import three states of the heart sprite
   public Sprite fullHeart, halfHeart, emptyHeart;
 
-
   //create a private list to store all the heart game objects
   List<GameObject> heartList = new List<GameObject>();
 
